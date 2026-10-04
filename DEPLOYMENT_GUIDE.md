@@ -7,29 +7,43 @@ This project is configured for seamless deployment:
 
 ---
 
-## Step 1: Set Up Cloud MySQL Database (TiDB Cloud - Free)
+---
 
-We recommend **TiDB Cloud Serverless** because it is 100% MySQL compatible, completely free forever (up to 5GB storage), requires no credit card, and sets up in under 60 seconds.
+## Step 1: Set Up Your Database (Choose TiDB Cloud or Supabase)
 
-1. Go to **[https://tidbcloud.com](https://tidbcloud.com/)** and sign in (using GitHub or Google).
+You can choose either **TiDB Cloud (MySQL)** or **Supabase (PostgreSQL)**. Both are supported out of the box!
+
+### Option A: TiDB Cloud Serverless (MySQL — Recommended for 0 Code Changes)
+- **Free tier**: 5 GB storage, permanent free tier, zero credit card.
+- **Why**: Native MySQL. Matches your local XAMPP environment 100%.
+
+1. Go to **[https://tidbcloud.com](https://tidbcloud.com/)** and sign in (GitHub or Google).
 2. Click **Create Cluster** and select **Serverless (Free)**.
-3. Choose your preferred region (e.g., AWS us-east-1 or ap-southeast-1) and click **Create**.
-4. In the cluster overview:
-   - Note the **Root Password** generated (copy it and keep it safe).
-   - Click **Connect** and select **General** / **MySQL CLI**.
-   - You will see your credentials:
-     - **Host**: e.g., `gateway01.us-east-1.prod.aws.tidbcloud.com`
-     - **Port**: `4000`
-     - **User**: e.g., `2AbCdEf.root`
-     - **Database**: `test` (or create `travel_planner`)
-     - **SSL**: Enabled (`DB_SSL=true`)
-5. **Import Schema & Seed Data**:
-   - In the TiDB Cloud Console, click **SQL Editor** in the left sidebar.
-   - Open [`database/complete_production_database.sql`](./database/complete_production_database.sql) in VS Code or text editor.
-   - Copy the entire SQL content and paste it into the TiDB SQL Editor, then click **Run**.
-   - *All tables, 8 destinations, 24 places, 23 hotels, and trips are now populated!*
+3. Save the generated **Root Password**.
+4. Click **Connect** → choose **General**:
+   - **Host**: e.g., `gateway01.us-east-1.prod.aws.tidbcloud.com`
+   - **Port**: `4000`
+   - **User**: e.g., `2AbCdEf.root`
+   - **Database**: `test`
+5. Click **SQL Editor** in the left sidebar, paste the contents of [`database/complete_production_database.sql`](./database/complete_production_database.sql), and click **Run**.
 
-*(Alternative free MySQL options: [Aiven for MySQL](https://aiven.io/mysql), [Clever Cloud MySQL](https://www.clever-cloud.com/), or [Railway MySQL](https://railway.app/).)*
+---
+
+### Option B: Supabase (PostgreSQL — Free 500MB)
+- **Free tier**: 500 MB PostgreSQL database, beautiful dashboard, zero credit card.
+- **Why**: Very popular, great management UI.
+
+1. Go to **[https://supabase.com](https://supabase.com/)** and create a **New project** (e.g., `travel-journey-planner`). Save your **Database Password**.
+2. In the Supabase left sidebar, click **SQL Editor** → click **New query**.
+3. Open [`database/supabase_schema_and_data.sql`](./database/supabase_schema_and_data.sql), paste the entire file into the SQL Editor, and click **Run**.
+   - *This creates all 7 tables, seeds 8 destinations, 24 tourist places, and 23 hotels, and updates the ID sequences automatically.*
+4. In the left sidebar, go to **Project Settings** → **Database**:
+   - Under **Connection parameters** (or **Connection string** → URI):
+     - **Host**: e.g., `aws-0-ap-south-1.pooler.supabase.com` (or direct host `db.xxxx.supabase.co`)
+     - **Port**: `5432` or `6543`
+     - **Database**: `postgres`
+     - **User**: `postgres.xxxx` (or `postgres`)
+     - **Password**: your database password
 
 ---
 

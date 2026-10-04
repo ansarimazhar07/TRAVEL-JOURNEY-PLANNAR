@@ -12,21 +12,30 @@
 
 require_once 'config.php';
 
-// Build the PDO Data Source Name (DSN)
-$port = defined('DB_PORT') ? DB_PORT : '3306';
-$dsn = "mysql:host=" . DB_HOST . ";port=" . $port . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET;
+// Detect driver: auto-detect 'pgsql' if port is 5432/6543 or DB_DRIVER=pgsql
+$port = defined('DB_PORT') ? (string)DB_PORT : '3306';
+$driver = getenv('DB_DRIVER') ?: (in_array($port, ['5432', '6543']) ? 'pgsql' : 'mysql');
 
-// PDO options for better error handling
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION, // Throw exceptions on error
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,       // Return rows as associative arrays
-    PDO::ATTR_EMULATE_PREPARES   => false,                  // Use real prepared statements
-];
-
-// If connecting to cloud databases (TiDB Cloud, Aiven, etc.) with SSL
-if (defined('DB_SSL') && DB_SSL) {
-    if (defined('PDO::MYSQL_ATTR_SSL_CA')) {
-        $options[PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = false;
+if ($driver === 'pgsql') {
+    // PostgreSQL / Supabase
+    $dsn = "pgsql:host=" . DB_HOST . ";port=" . $port . ";dbname=" . DB_NAME . ";sslmode=require";
+    $options = [
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES   => false,
+    ];
+} else {
+    // MySQL / MariaDB / TiDB Cloud / Aiven
+    $dsn = "mysql:host=" . DB_HOST . ";port=" . $port . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET;
+    $options = [
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES   => false,
+    ];
+    if (defined('DB_SSL') && DB_SSL) {
+        if (defined('PDO::MYSQL_ATTR_SSL_CA')) {
+            $options[PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = false;
+        }
     }
 }
 

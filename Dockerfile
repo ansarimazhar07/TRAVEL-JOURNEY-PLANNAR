@@ -1,8 +1,10 @@
 # Travel Journey Planner - Backend Dockerfile for Render
 FROM php:8.2-apache
 
-# Install PDO MySQL and required PHP extensions
-RUN docker-php-ext-install pdo pdo_mysql mysqli
+# Install both MySQL and PostgreSQL (Supabase) PDO drivers and extensions
+RUN apt-get update && apt-get install -y --no-install-recommends libpq-dev \
+    && docker-php-ext-install pdo pdo_mysql pdo_pgsql mysqli \
+    && rm -rf /var/lib/apt/lists/*
 
 # Enable Apache rewrite and headers modules
 RUN a2enmod rewrite headers
