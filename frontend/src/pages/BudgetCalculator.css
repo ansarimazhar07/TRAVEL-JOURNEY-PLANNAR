@@ -1,0 +1,419 @@
+/* ============================================================
+   BudgetCalculator.css — Phase 7
+   Trip Budget Calculator page styles
+   Uses the same design tokens as the rest of the app
+   ============================================================ */
+
+/* ---- Page wrapper ---- */
+.budget-page {
+  min-height: calc(100vh - 120px);
+  padding: var(--space-xl) var(--space-md);
+  background: linear-gradient(135deg, var(--bg-warm) 0%, var(--bg) 100%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* ---- Centered column ---- */
+.budget-container {
+  width: 100%;
+  max-width: 560px;
+}
+
+/* ---- Back link ---- */
+.budget-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  margin-bottom: 22px;
+  transition: color 0.2s;
+}
+
+.budget-back:hover {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+/* ---- Main card ---- */
+.budget-card {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 8px 40px rgba(80,30,10,0.13);
+  overflow: hidden;
+  animation: budgetFadeIn 0.35s ease;
+}
+
+@keyframes budgetFadeIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* Reset flash animation */
+@keyframes budgetFlash {
+  0%   { box-shadow: 0 8px 40px rgba(80,30,10,0.13); }
+  50%  { box-shadow: 0 0 0 4px rgba(181,69,27,0.25), 0 8px 40px rgba(80,30,10,0.13); }
+  100% { box-shadow: 0 8px 40px rgba(80,30,10,0.13); }
+}
+
+.budget-reset-flash {
+  animation: budgetFlash 0.4s ease;
+}
+
+/* ---- Card header ---- */
+.budget-header {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: var(--white);
+  padding: 28px 28px 24px;
+  text-align: center;
+}
+
+.budget-header-icon {
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+}
+
+.budget-title {
+  font-family: var(--font-heading);
+  font-size: 1.65rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--white);
+}
+
+.budget-subtitle {
+  font-size: 0.88rem;
+  opacity: 0.88;
+}
+
+/* ---- Card body ---- */
+.budget-body {
+  padding: 28px;
+}
+
+/* ---- Input fields ---- */
+.budget-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.budget-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.budget-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.budget-label-emoji {
+  font-size: 1rem;
+}
+
+/* Input with ₹ prefix */
+.budget-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.budget-rupee {
+  position: absolute;
+  left: 13px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+
+.budget-input {
+  width: 100%;
+  padding: 11px 72px 11px 30px; /* left for ₹, right for % badge */
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--text);
+  background: var(--bg-warm);
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  outline: none;
+  box-sizing: border-box;
+  -moz-appearance: textfield; /* hide number arrows in Firefox */
+}
+
+/* Hide number spinners in Chrome/Safari */
+.budget-input::-webkit-outer-spin-button,
+.budget-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.budget-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(181,69,27,0.12);
+  background: var(--white);
+}
+
+.budget-input-error {
+  border-color: #ef4444 !important;
+}
+
+/* Percentage badge inside the input */
+.budget-pct-badge {
+  position: absolute;
+  right: 10px;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 100px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Field-level error message */
+.budget-field-error {
+  font-size: 0.8rem;
+  color: #dc2626;
+}
+
+/* ---- Breakdown bar ---- */
+.budget-bar-section {
+  margin-bottom: 24px;
+}
+
+.budget-bar-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.budget-bar {
+  display: flex;
+  height: 10px;
+  border-radius: 100px;
+  overflow: hidden;
+  background: var(--border);
+}
+
+.budget-bar-segment {
+  height: 100%;
+  transition: width 0.35s ease;
+}
+
+/* Segment colors per category */
+.budget-bar-travel     { background: #b5451b; }
+.budget-bar-hotel      { background: #d4891a; }
+.budget-bar-food       { background: #276749; }
+.budget-bar-activities { background: #1a72d4; }
+.budget-bar-other      { background: #7c3aed; }
+
+/* Legend */
+.budget-bar-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin-top: 10px;
+}
+
+.budget-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.budget-legend-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Dot colors match bar segments */
+.budget-legend-travel     { background: #b5451b; }
+.budget-legend-hotel      { background: #d4891a; }
+.budget-legend-food       { background: #276749; }
+.budget-legend-activities { background: #1a72d4; }
+.budget-legend-other      { background: #7c3aed; }
+
+/* ---- Total display ---- */
+.budget-total-section {
+  background: linear-gradient(135deg, var(--primary-light), #fff5f0);
+  border: 1.5px solid rgba(181,69,27,0.18);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  transition: box-shadow 0.3s;
+}
+
+.budget-total-section:has(.budget-total-active) {
+  box-shadow: 0 4px 18px rgba(181,69,27,0.12);
+}
+
+.budget-total-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 6px;
+}
+
+.budget-total-amount {
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--text-light);
+  letter-spacing: -1px;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.budget-total-active {
+  color: var(--primary);
+}
+
+.budget-total-note {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* ---- Itemised summary ---- */
+.budget-summary {
+  background: var(--bg-warm);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  margin-bottom: 22px;
+}
+
+.budget-summary-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.budget-summary-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.budget-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.budget-summary-label {
+  color: var(--text-muted);
+}
+
+.budget-summary-amount {
+  font-weight: 600;
+  color: var(--text);
+  font-family: var(--font-heading);
+}
+
+/* Total row separator */
+.budget-summary-total-row {
+  border-top: 1.5px solid var(--border);
+  padding-top: 8px;
+  margin-top: 2px;
+}
+
+.budget-summary-total-amount {
+  color: var(--primary);
+  font-size: 1rem;
+}
+
+/* ---- Reset button ---- */
+.budget-actions {
+  text-align: center;
+}
+
+.budget-reset-btn {
+  padding: 11px 32px;
+  background: var(--bg-warm);
+  color: var(--text-muted);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 0.93rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.1s;
+}
+
+.budget-reset-btn:hover {
+  background: rgba(181,69,27,0.08);
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.budget-reset-btn:active {
+  transform: translateY(0);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 600px) {
+  .budget-page {
+    padding: var(--space-lg) var(--space-sm);
+  }
+
+  .budget-header {
+    padding: 22px 20px 18px;
+  }
+
+  .budget-body {
+    padding: 20px 18px;
+  }
+
+  .budget-title {
+    font-size: 1.35rem;
+  }
+
+  .budget-total-amount {
+    font-size: 1.9rem;
+  }
+
+  .budget-bar-legend {
+    gap: 6px 10px;
+  }
+}
+
+@media (max-width: 380px) {
+  .budget-total-amount {
+    font-size: 1.6rem;
+  }
+
+  .budget-summary-row {
+    font-size: 0.82rem;
+  }
+}

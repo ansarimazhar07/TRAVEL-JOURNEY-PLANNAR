@@ -1,0 +1,136 @@
+/* PlaceCard styles — mirrors DestinationCard visual style */
+
+.place-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.place-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-5px);
+}
+
+/* Image container */
+.place-card-image-wrap {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  background: var(--bg-warm);
+}
+
+.place-card-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.place-card:hover .place-card-image-wrap img {
+  transform: scale(1.05);
+}
+
+/* Fallback emoji */
+.place-card-img-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+}
+
+/* Category badge top-left */
+.place-card-category {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(0,0,0,0.55);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 99px;
+  backdrop-filter: blur(4px);
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+/* Entry fee badge bottom-right */
+.place-card-fee {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(181,69,27,0.9);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 99px;
+}
+
+.place-card-fee.free {
+  background: rgba(39,103,73,0.9);
+}
+
+/* Card body */
+.place-card-body {
+  padding: 18px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.place-card-name {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.place-card-location {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-bottom: 8px;
+}
+
+.place-card-desc {
+  font-size: 0.87rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 16px;
+  margin-top: auto;
+  /* Show only 2 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* View Details button */
+.place-card-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 9px 0;
+  background: var(--primary);
+  color: #ffffff;
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.place-card-btn:hover {
+  background: var(--primary-dark);
+  text-decoration: none;
+  color: #ffffff;
+  transform: translateY(-1px);
+}

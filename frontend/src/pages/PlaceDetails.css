@@ -1,0 +1,111 @@
+/* PlaceDetails page styles — mirrors DestinationDetails.css */
+
+/* ---- Hero ---- */
+.pd-hero {
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+  background: var(--bg-warm);
+}
+
+.pd-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pd-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,30,10,0.75) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+  display: flex;
+  align-items: flex-end;
+}
+
+.pd-hero-text {
+  padding: 32px;
+  color: #ffffff;
+}
+
+.pd-hero-text h1 {
+  color: #ffffff;
+  font-size: 2.4rem;
+  margin-bottom: 6px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.pd-location {
+  color: rgba(255,255,255,0.88);
+  font-size: 0.95rem;
+}
+
+/* Fallback when no image */
+.pd-hero-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 6rem;
+  background: linear-gradient(135deg, #e8f5e9, #a5d6a7);
+}
+
+/* ---- Layout ---- */
+.pd-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 32px;
+  padding: 40px 0 64px;
+  align-items: start;
+}
+
+/* ---- Left main ---- */
+.pd-main h2 {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.pd-description {
+  font-size: 0.97rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+/* ---- Sidebar ---- */
+.pd-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Entry fee value */
+.pd-fee-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.pd-fee-value.free {
+  color: var(--success);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 800px) {
+  .pd-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .pd-hero {
+    height: 280px;
+  }
+
+  .pd-hero-text h1 {
+    font-size: 1.8rem;
+  }
+
+  .pd-sidebar {
+    order: -1;
+  }
+}

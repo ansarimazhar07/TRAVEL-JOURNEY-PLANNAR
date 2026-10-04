@@ -1,0 +1,227 @@
+/* ============================================================
+   StationInput.css — Autocomplete Suggestion Dropdown
+   ============================================================ */
+
+.station-autocomplete-group {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.station-input-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text, #2c1a0e);
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.station-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.station-input-icon {
+  position: absolute;
+  left: 0.85rem;
+  font-size: 1rem;
+  pointer-events: none;
+  opacity: 0.75;
+  z-index: 2;
+}
+
+.station-input-field {
+  width: 100%;
+  padding: 0.8rem 2.2rem 0.8rem 2.35rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text, #2c1a0e);
+  background: var(--bg, #faf7f3);
+  border: 1.5px solid var(--border, #e8ddd4);
+  border-radius: var(--radius-md, 10px);
+  transition: all var(--transition, 0.2s ease);
+  outline: none;
+}
+
+.station-input-field:focus {
+  border-color: var(--primary, #b5451b);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(181, 69, 27, 0.12);
+}
+
+.station-clear-btn {
+  position: absolute;
+  right: 0.65rem;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.08);
+  border: none;
+  color: var(--text-muted, #7a5c48);
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition, 0.2s ease);
+  z-index: 2;
+}
+
+.station-clear-btn:hover {
+  background: var(--primary, #b5451b);
+  color: #ffffff;
+}
+
+.station-input-hint {
+  font-size: 0.73rem;
+  color: var(--text-light, #b08c7a);
+  margin-top: 0.3rem;
+}
+
+/* Dropdown Container */
+.station-dropdown-box {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid var(--border, #e8ddd4);
+  border-radius: var(--radius-md, 12px);
+  box-shadow: 0 12px 32px rgba(80, 30, 10, 0.16);
+  z-index: 1000;
+  overflow: hidden;
+  animation: dropdownFadeIn 0.18s ease-out;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.station-dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.85rem;
+  background: var(--bg-warm, #f5ede4);
+  border-bottom: 1px solid var(--border, #e8ddd4);
+  font-size: 0.73rem;
+  font-weight: 700;
+  color: var(--text-muted, #7a5c48);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.station-dropdown-count {
+  font-weight: 600;
+  color: var(--text-light, #b08c7a);
+  text-transform: none;
+}
+
+.station-suggestions-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.3rem 0;
+  max-height: 270px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.station-suggestion-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.85rem;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  border-bottom: 1px solid rgba(232, 221, 212, 0.35);
+}
+
+.station-suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.station-suggestion-item.highlighted,
+.station-suggestion-item:hover {
+  background: var(--primary-light, #fde9e1);
+}
+
+.station-suggestion-item.selected {
+  background: #fbf0ec;
+}
+
+.suggestion-main-info {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.suggestion-train-icon {
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.suggestion-text-wrap {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.suggestion-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text, #2c1a0e);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.suggestion-location {
+  font-size: 0.75rem;
+  color: var(--text-muted, #7a5c48);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.suggestion-code-pill {
+  background: #2c1a0e;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-sm, 6px);
+  font-family: var(--font-heading, inherit);
+  flex-shrink: 0;
+}
+
+.station-suggestion-item.highlighted .suggestion-code-pill,
+.station-suggestion-item:hover .suggestion-code-pill {
+  background: var(--primary, #b5451b);
+}
+
+/* Empty matches state */
+.station-no-matches {
+  padding: 1.25rem 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--text-muted, #7a5c48);
+}
+
+.station-no-matches-hint {
+  font-size: 0.75rem;
+  color: var(--text-light, #b08c7a);
+}

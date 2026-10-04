@@ -1,0 +1,181 @@
+/* Navbar styles */
+.navbar {
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 62px;
+}
+
+/* Brand / Logo */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.navbar-brand:hover {
+  text-decoration: none;
+  color: var(--primary-dark);
+}
+
+.navbar-logo-icon {
+  font-size: 1.5rem;
+}
+
+/* Nav links */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-link {
+  padding: 7px 13px;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  transition: background var(--transition), color var(--transition);
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.nav-link.active {
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Login button in nav */
+.nav-link-btn {
+  padding: 7px 16px;
+  background: var(--primary);
+  color: var(--white) !important;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: background var(--transition);
+}
+
+.nav-link-btn:hover {
+  background: var(--primary-dark) !important;
+  color: var(--white) !important;
+  text-decoration: none;
+}
+
+/* Mobile hamburger */
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+}
+
+.hamburger-line {
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+/* Mobile menu */
+.navbar-mobile {
+  display: none;
+  flex-direction: column;
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  padding: var(--space-sm) var(--space-lg) var(--space-md);
+}
+
+.navbar-mobile.open {
+  display: flex;
+}
+
+.nav-link-mobile {
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  transition: background var(--transition), color var(--transition);
+}
+
+.nav-link-mobile:hover,
+.nav-link-mobile.active {
+  background: var(--primary-light);
+  color: var(--primary);
+  text-decoration: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-toggle {
+    display: flex;
+  }
+}
+
+/* ---- Phase 4 Auth additions ---- */
+
+/* "Hi, Name" greeting link */
+.nav-user-greeting {
+  font-weight: 600;
+  color: var(--primary) !important;
+}
+
+/* Logout button — reset browser button styles, match nav-link-btn */
+.nav-logout-btn {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  font-size: 0.9rem;
+  /* inherits .nav-link-btn styles */
+}
+
+/* Mobile logout button */
+.nav-logout-mobile {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--danger, #ef4444);
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition);
+  width: 100%;
+}
+
+.nav-logout-mobile:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+

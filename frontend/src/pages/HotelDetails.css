@@ -1,0 +1,191 @@
+/* HotelDetails page styles */
+
+/* ---- Hero ---- */
+.hd-hero {
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+  background: var(--bg-warm);
+}
+
+.hd-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hd-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,10,40,0.75) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+  display: flex;
+  align-items: flex-end;
+}
+
+.hd-hero-text {
+  padding: 32px;
+  color: #ffffff;
+}
+
+.hd-hero-text h1 {
+  color: #ffffff;
+  font-size: 2.4rem;
+  margin-bottom: 6px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.hd-location {
+  color: rgba(255,255,255,0.88);
+  font-size: 0.95rem;
+}
+
+/* Fallback when no image */
+.hd-hero-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 6rem;
+  background: linear-gradient(135deg, #e8eaf6, #c5cae9);
+}
+
+/* ---- Layout ---- */
+.hd-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 32px;
+  padding: 40px 0 64px;
+  align-items: start;
+}
+
+/* ---- Left main ---- */
+.hd-main h2 {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.hd-description {
+  font-size: 0.97rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  white-space: pre-line;
+  margin-bottom: 32px;
+}
+
+/* Facilities section */
+.hd-facilities {
+  margin-top: 8px;
+}
+
+.hd-facilities h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: var(--text);
+}
+
+.hd-facilities-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.hd-facility-item {
+  background: var(--bg-warm);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ---- Sidebar ---- */
+.hd-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Price card highlight */
+.hd-price-card {
+  border-color: var(--primary) !important;
+  background: var(--primary-light) !important;
+}
+
+.hd-price-display {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.hd-price-amount {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.hd-price-night {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+/* Star rating row */
+.hd-stars-row {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
+.hd-star {
+  font-size: 1.1rem;
+}
+
+.hd-star.filled {
+  color: #f59e0b;
+}
+
+.hd-star.half {
+  color: #f59e0b;
+  opacity: 0.7;
+}
+
+.hd-star.empty {
+  color: #d1d5db;
+}
+
+.hd-rating-num {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-left: 4px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 800px) {
+  .hd-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hd-hero {
+    height: 280px;
+  }
+
+  .hd-hero-text h1 {
+    font-size: 1.8rem;
+  }
+
+  .hd-sidebar {
+    order: -1;
+  }
+
+  .hd-facilities-grid {
+    grid-template-columns: 1fr;
+  }
+}

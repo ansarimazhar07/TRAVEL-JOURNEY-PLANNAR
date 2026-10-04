@@ -1,0 +1,112 @@
+/* Hotels page styles */
+
+/* ---- Page hero ---- */
+.hotels-hero {
+  background: linear-gradient(135deg, #1a1a3a 0%, #2d2d6b 50%, #3e3e8e 100%);
+  color: #ffffff;
+  padding: 56px 0 48px;
+}
+
+.hotels-hero h1 {
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.hotels-hero p {
+  color: rgba(255,255,255,0.82);
+  font-size: 1rem;
+}
+
+/* ---- Toolbar ---- */
+.hotels-toolbar {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 18px 0;
+  position: sticky;
+  top: 62px;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.hotels-toolbar-inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* ---- Main content ---- */
+.hotels-main {
+  padding: 40px 0 64px;
+}
+
+/* Section heading row */
+.hotels-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.hotels-section-heading h2 {
+  font-size: 1.3rem;
+  color: var(--text);
+}
+
+.hotels-section-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ---- Grid ---- */
+.hotels-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* No results */
+.no-results {
+  text-align: center;
+  padding: 64px 20px;
+  grid-column: 1 / -1;
+}
+
+.no-results-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.no-results h3 {
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.no-results p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .hotels-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .hotels-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hotels-hero {
+    padding: 40px 0 32px;
+  }
+
+  .hotels-toolbar {
+    top: 56px;
+  }
+}

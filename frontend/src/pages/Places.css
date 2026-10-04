@@ -1,0 +1,130 @@
+/* Places page styles — mirrors Destinations.css */
+
+/* ---- Page hero ---- */
+.places-hero {
+  background: linear-gradient(135deg, #1a3a1a 0%, #2d6b2d 50%, #3e8e3e 100%);
+  color: #ffffff;
+  padding: 56px 0 48px;
+}
+
+.places-hero h1 {
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.places-hero p {
+  color: rgba(255,255,255,0.82);
+  font-size: 1rem;
+}
+
+/* ---- Toolbar ---- */
+.places-toolbar {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 18px 0;
+  position: sticky;
+  top: 62px;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.places-toolbar-inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Back navigation link */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--primary);
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.back-link:hover {
+  color: var(--primary-dark);
+  text-decoration: none;
+}
+
+/* ---- Main content ---- */
+.places-main {
+  padding: 40px 0 64px;
+}
+
+/* Section heading row */
+.places-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.places-section-heading h2 {
+  font-size: 1.3rem;
+  color: var(--text);
+}
+
+.places-section-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ---- Grid ---- */
+.places-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* No results */
+.no-results {
+  text-align: center;
+  padding: 64px 20px;
+  grid-column: 1 / -1;
+}
+
+.no-results-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.no-results h3 {
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.no-results p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .places-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .places-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .places-hero {
+    padding: 40px 0 32px;
+  }
+
+  .places-toolbar {
+    top: 56px;
+  }
+}
