@@ -13,7 +13,8 @@
 require_once 'config.php';
 
 // Build the PDO Data Source Name (DSN)
-$dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET;
+$port = defined('DB_PORT') ? DB_PORT : '3306';
+$dsn = "mysql:host=" . DB_HOST . ";port=" . $port . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET;
 
 // PDO options for better error handling
 $options = [
@@ -21,6 +22,13 @@ $options = [
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,       // Return rows as associative arrays
     PDO::ATTR_EMULATE_PREPARES   => false,                  // Use real prepared statements
 ];
+
+// If connecting to cloud databases (TiDB Cloud, Aiven, etc.) with SSL
+if (defined('DB_SSL') && DB_SSL) {
+    if (defined('PDO::MYSQL_ATTR_SSL_CA')) {
+        $options[PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = false;
+    }
+}
 
 try {
     // Create the database connection
@@ -31,7 +39,7 @@ try {
     header('Content-Type: application/json');
     echo json_encode([
         'success' => false,
-        'message' => 'Database connection failed. Please check your configuration.',
+        'message' => 'Database connection failed: ' . $e->getMessage(),
     ]);
     exit;
 }

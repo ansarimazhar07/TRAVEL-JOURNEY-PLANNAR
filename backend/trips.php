@@ -13,8 +13,8 @@
  * DELETE /trips.php?id=1     → delete a trip (must belong to logged-in user)
  */
 
-// Start session BEFORE any output or headers
-session_start();
+// Start session with secure cross-origin settings
+require_once __DIR__ . '/session.php';
 
 // Include CORS headers (includes Content-Type: application/json)
 require_once 'cors.php';

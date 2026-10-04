@@ -12,8 +12,10 @@
  */
 
 // Base URL for the PHP backend.
-// Change this if your XAMPP/WAMP serves PHP at a different path.
-const API_URL = 'http://localhost/travel-journey-planner/backend';
+// In production (Netlify), set VITE_API_URL in your Netlify site settings.
+// In local development, it defaults to the local XAMPP Apache path.
+const RAW_API_URL = import.meta.env.VITE_API_URL || 'http://localhost/travel-journey-planner/backend';
+const API_URL = RAW_API_URL.replace(/\/+$/, '');
 
 // ============================================================
 // DESTINATIONS

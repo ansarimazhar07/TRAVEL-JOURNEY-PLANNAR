@@ -13,8 +13,8 @@
  *   { "success": true, "loggedIn": false }
  */
 
-// Start session BEFORE any output or headers
-session_start();
+// Start session with secure cross-origin settings
+require_once __DIR__ . '/../session.php';
 
 // Include CORS headers
 require_once '../cors.php';
