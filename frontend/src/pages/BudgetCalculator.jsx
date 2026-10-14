@@ -1,9 +1,9 @@
 /**
- * BudgetCalculator.jsx — Phase 7
+ * BudgetCalculator.jsx — Interactive Trip Expense Estimator View
  *
- * Route: /budget  (also /budget?trip_id=<id> from TripDetails)
- * A frontend-only trip budget calculator.
- * No API calls, no database. Pure React state + JavaScript maths.
+ * Route: /budget  (also /budget?trip_id=<id> linked from TripDetails)
+ * A client-side trip budgeting tool utilizing pure React state and reactive arithmetic.
+ * Computes categorical expense breakdowns, per-person costs, and budget health indicators.
  */
 
 import React, { useState } from 'react'

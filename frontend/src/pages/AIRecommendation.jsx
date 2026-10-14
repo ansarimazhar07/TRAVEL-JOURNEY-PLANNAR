@@ -1,12 +1,12 @@
 /**
- * AIRecommendation.jsx — Phase 9
+ * AIRecommendation.jsx — AI-Powered Travel Itinerary Generator View
  *
  * Route: /ai-recommendation
+ * Interactive travel planning interface powered by Google Gemini generative AI.
+ * Captures traveler preferences, duration, and departure point, passing them to the PHP
+ * AI proxy service and rendering structured day-by-day itineraries.
  *
- * AI-powered travel recommendation page.
- * User fills in travel preferences → PHP backend → Gemini API → Recommendation displayed.
- *
- * Security: Gemini API key is NEVER in React — it lives only in backend/config.php.
+ * Security: Gemini API keys are kept strictly on the backend server.
  */
 
 import React, { useState, useEffect, useRef } from 'react'

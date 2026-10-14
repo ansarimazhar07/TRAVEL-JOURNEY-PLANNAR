@@ -21,8 +21,8 @@ const FEATURES = [
   },
   {
     icon: '🤖',
-    title: 'AI Recommendations',
-    desc: 'Get personalised travel itineraries powered by Gemini AI based on your interests.',
+    title: 'AI Trip Planning',
+    desc: 'Plan complete day-by-day journeys from your city to any destination powered by Gemini AI.',
   },
   {
     icon: '🌤️',
@@ -36,7 +36,7 @@ const FEATURES = [
   },
 ]
 
-// Sample destination previews (replaced by real data in Phase 2)
+// Featured destination highlights displayed on the landing page
 const SAMPLE_DESTINATIONS = [
   { icon: '🏯', name: 'Jaipur', country: 'India', desc: 'The Pink City — forts, palaces and rich culture.' },
   { icon: '🏖️', name: 'Goa',    country: 'India', desc: 'Sun, sand and sea — India\'s beach paradise.' },
@@ -141,7 +141,7 @@ function Home() {
           <div className="dest-cards">
             {SAMPLE_DESTINATIONS.map((dest, index) => (
               <div className="dest-card" key={index}>
-                {/* Placeholder image with emoji — replaced by real images in Phase 2 */}
+                {/* Destination preview thumbnail icon */}
                 <div className="dest-card-img">{dest.icon}</div>
                 <div className="dest-card-body">
                   <h3>{dest.name}</h3>

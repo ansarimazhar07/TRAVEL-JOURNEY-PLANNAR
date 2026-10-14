@@ -1,4 +1,4 @@
-﻿-- MariaDB dump 10.19  Distrib 10.4.32-MariaDB, for Win64 (AMD64)
+-- MariaDB dump 10.19  Distrib 10.4.32-MariaDB, for Win64 (AMD64)
 --
 -- Host: localhost    Database: travel_planner
 -- ------------------------------------------------------
@@ -192,6 +192,7 @@ CREATE TABLE `trips` (
   `user_id` int(11) NOT NULL,
   `destination_id` int(11) DEFAULT NULL,
   `trip_name` varchar(200) DEFAULT NULL,
+  `source_location` varchar(150) DEFAULT NULL,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
   `num_travellers` int(11) DEFAULT 1,

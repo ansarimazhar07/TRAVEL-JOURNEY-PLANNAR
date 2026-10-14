@@ -1,9 +1,9 @@
 /**
- * Profile.jsx — Phase 4
+ * Profile.jsx — User Profile & Session Dashboard View
  *
  * Route: /profile
- * Shows the currently logged-in user's information.
- * Protected: redirects to /login if not logged in.
+ * Displays the currently logged-in user's account details and session controls.
+ * Protected route: automatically redirects unauthenticated visitors to /login.
  */
 
 import React, { useState, useEffect } from 'react'

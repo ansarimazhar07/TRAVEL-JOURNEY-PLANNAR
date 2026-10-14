@@ -1,34 +1,34 @@
 <?php
 /**
- * auth/profile.php
+ * auth/profile.php — Authenticated User Profile Endpoint
  *
  * GET /auth/profile.php
- * Returns the currently logged-in user's profile data.
- * Only available to authenticated users (session required).
+ * Retrieves user profile metadata (ID, name, email, account creation date).
+ * Strictly requires an active PHP session; rejects unauthorized requests with HTTP 401.
  *
- * Response (logged in):
- *   { "success": true, "user": { id, name, email, created_at } }
+ * Response (Success):
+ *   { "success": true, "user": { "id": 1, "name": "...", "email": "...", "created_at": "..." } }
  *
- * Response (not logged in):
+ * Response (Unauthorized):
  *   { "success": false, "message": "Not logged in." }
  */
 
-// Start session with secure cross-origin settings
+// --- Middleware & Database Initialization ---
 require_once __DIR__ . '/../session.php';
-
-// Include CORS headers and database connection
 require_once '../cors.php';
 require_once '../db.php';
 
-// Check if the user is logged in
+// --- Authentication Guard ---
+// Enforce session presence — unauthenticated clients cannot access profile data
 if (!isset($_SESSION['user_id'])) {
     http_response_code(401);
     echo json_encode(['success' => false, 'message' => 'Not logged in. Please login to view your profile.']);
     exit;
 }
 
-// Fetch fresh user data from the database using their session user_id
+// --- Fetch Fresh Profile Record from Database ---
 try {
+    // Select user metadata using session ID; password column is intentionally omitted for safety
     $stmt = $conn->prepare(
         "SELECT id, name, email, created_at FROM users WHERE id = ?"
     );
@@ -36,13 +36,13 @@ try {
     $user = $stmt->fetch();
 
     if (!$user) {
-        // This shouldn't normally happen, but handle it gracefully
+        // Edge case: session exists but database record was deleted
         http_response_code(404);
         echo json_encode(['success' => false, 'message' => 'User account not found.']);
         exit;
     }
 
-    // Return user data — note: password is NOT selected or returned
+    // Return safe user profile payload
     echo json_encode([
         'success' => true,
         'user'    => [

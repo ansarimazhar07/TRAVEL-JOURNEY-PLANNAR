@@ -1,24 +1,29 @@
 <?php
 /**
- * destinations.php
+ * destinations.php — Destination Catalog REST API Controller
  * 
- * REST API endpoint for the destinations table.
+ * Provides read access to the catalog of travel destinations.
  * 
- * GET /destinations.php         → returns all destinations
- * GET /destinations.php?id=1    → returns one destination by ID
+ * REST Endpoints:
+ *   GET /destinations.php         → Returns complete array of destinations sorted alphabetically
+ *   GET /destinations.php?id=1    → Returns a single destination record by its primary key ID
  * 
- * Used by: React Destinations page, Destination Details page
+ * Consumer Components:
+ *   - React Destinations Catalog (/destinations)
+ *   - React Destination Details (/destinations/:id)
+ *   - React Trip Planner Dropdown (/plan-trip)
  */
 
-require_once 'cors.php';   // Set CORS headers + Content-Type: application/json
-require_once 'db.php';     // Creates $conn (PDO connection)
+// --- Middleware & Dependencies ---
+require_once 'cors.php';   // Injects CORS headers + Content-Type: application/json
+require_once 'db.php';     // Instantiates $conn PDO database handle
 
-// ---- Read the request method ----
+// --- HTTP Method Enforcement ---
 $method = $_SERVER['REQUEST_METHOD'];
 
-// ---- Only GET is supported on this endpoint ----
+// Destinations catalog is read-only for public visitors
 if ($method !== 'GET') {
-    http_response_code(405); // Method Not Allowed
+    http_response_code(405);
     echo json_encode([
         'success' => false,
         'message' => 'Method not allowed. Only GET is supported.'
@@ -26,7 +31,8 @@ if ($method !== 'GET') {
     exit;
 }
 
-// ---- Check if a specific ID was requested ----
+// --- Query Routing ---
+// If 'id' query parameter is present, route to single destination handler; otherwise fetch all.
 if (isset($_GET['id'])) {
     getOneDestination($conn, $_GET['id']);
 } else {

@@ -22,6 +22,7 @@ USE travel_planner;
 --   start_date      - trip start date
 --   end_date        - trip end date
 --   num_travellers  - number of people travelling
+--   source_location - city or place of origin (e.g. "New Delhi")
 --   notes           - optional additional notes
 --   created_at      - auto timestamp
 -- ============================================================
@@ -30,6 +31,7 @@ CREATE TABLE IF NOT EXISTS trips (
     user_id         INT            NOT NULL,
     destination_id  INT,
     trip_name       VARCHAR(200),
+    source_location VARCHAR(150),
     start_date      DATE           NOT NULL,
     end_date        DATE           NOT NULL,
     num_travellers  INT            DEFAULT 1,
@@ -39,12 +41,16 @@ CREATE TABLE IF NOT EXISTS trips (
     FOREIGN KEY (destination_id) REFERENCES destinations(id) ON DELETE SET NULL
 );
 
+-- Migration for existing database instances:
+ALTER TABLE trips ADD COLUMN IF NOT EXISTS source_location VARCHAR(150) AFTER trip_name;
+
 -- ============================================================
 -- Phase 5 uses these columns from trips:
 --   user_id         -> NEVER taken from React; always from $_SESSION['user_id']
+--   source_location -> Source city/origin (e.g. "New Delhi")
 --   destination_id  -> Required for Phase 5 (dropdown in form)
 --   start_date      -> Required
 --   end_date        -> Required; must be >= start_date
 --   num_travellers  -> Required; minimum 1
---   trip_name       -> Auto-generated from destination name (e.g. "Goa Trip")
+--   trip_name       -> Auto-generated from destination name (e.g. "Delhi to Goa Trip")
 -- ============================================================

@@ -1,9 +1,9 @@
 /**
- * Register.jsx — Phase 4
+ * Register.jsx — User Registration View
  *
  * Route: /register
- * Allows new users to create an account.
- * On success, shows a success message and navigates to /login.
+ * Allows new travelers to create an account with name, email, and password.
+ * On success, confirms account creation and navigates to the login screen.
  */
 
 import React, { useState, useEffect } from 'react'

@@ -1,140 +1,166 @@
-# Graph Report - TRAVEL JOURNEY PLANNER  (2026-09-30)
+# Graph Report - TRAVEL JOURNEY PLANNER  (2026-10-14)
 
 ## Corpus Check
-- 43 files · ~253,663 words
-- Verdict: corpus is large enough that graph structure adds value.
+- cluster-only mode — file stats not available
 
 ## Summary
-- 170 nodes · 189 edges · 26 communities (12 shown, 13 thin omitted)
-- Extraction: 85% EXTRACTED · 15% INFERRED · 0% AMBIGUOUS · INFERRED: 28 edges (avg confidence: 0.87)
-- Token cost: 12,500 input · 3,200 output
+- 306 nodes · 504 edges · 41 communities (19 shown, 3 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 12 edges (avg confidence: 0.84)
+- Token cost: 0 input · 0 output
+
+## Graph Freshness
+- Built from commit: `34436329`
+- Run `git rev-parse HEAD` and compare to check if the graph is stale.
+- Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- External Services & PRD Specs
-- TypeScript Configuration
-- Destination Catalog Components
-- MySQL Relational Schema
-- Frontend Tooling & Scripts
-- React Runtime Dependencies
-- Destination Media & SQL Seeds
-- Navigation Bar & UI Sprite
-- Database Layer & Architecture
-- Destination REST Endpoints
-- About Page & Tech Showcase
-- App Shell & Routing Hierarchy
-- Home Page & Feature Showcase
-- CORS & API Security Proxy
-- Development Roadmap Phases
-- Backend Setup Automation
-- Minimal Storage Architecture
-- Booking & Payment Scope
-- Future Enhancements Roadmap
-- Project Scope Boundaries
-- External API Risk Strategy
-- System Hardware Specifications
-- Testing & Verification Protocols
-- Server Input Sanitization
-- Google Typography Assets
+- App.jsx
+- api.js
+- useAuth
+- package.json
+- compilerOptions
+- getDestination
+- getDestinations
+- TrainSearch.jsx
+- MyTrips.jsx
+- BudgetCalculator
+- TrainStatus.jsx
+- supabase_schema_and_data.sql
+- travel_planner.sql
+- trips.php
+- phase2_destinations.sql
+- AIItineraryDisplay.jsx
+- complete_production_database.sql
+- phase3_places_hotels.sql
+- trips
+- phase4_auth.sql
+- destinations
+- Inter and Poppins Google Fonts Preconnect
 
 ## God Nodes (most connected - your core abstractions)
-1. `compilerOptions` - 16 edges
-2. `destinations` - 5 edges
-3. `trips` - 5 edges
-4. `DestinationDetails()` - 5 edges
-5. `getDestinations()` - 5 edges
-6. `scripts` - 4 edges
-7. `Destinations()` - 4 edges
-8. `Weather()` - 4 edges
-9. `getDestination()` - 4 edges
-10. `users` - 3 edges
+1. `TripPlanner()` - 16 edges
+2. `compilerOptions` - 16 edges
+3. `useAuth()` - 15 edges
+4. `TripDetails()` - 14 edges
+5. `getDestination()` - 11 edges
+6. `generateAITripPlan()` - 10 edges
+7. `deleteTrip()` - 9 edges
+8. `updateTrip()` - 9 edges
+9. `getDestinationById()` - 8 edges
+10. `TrainStatus()` - 8 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `Uniform JSON Response Envelope Protocol` --conceptually_related_to--> `getDestinations()`  [INFERRED]
-  DOCUMENTATION/TRD.md → frontend/src/services/api.js
-- `Destinations Entity Specification` --references--> `destinations`  [EXTRACTED]
-  DOCUMENTATION/DATABASE.md → database/travel_planner.sql
-- `Trips Entity Specification` --references--> `trips`  [EXTRACTED]
-  DOCUMENTATION/DATABASE.md → database/travel_planner.sql
-- `Travel Planner User Journey Flow` --references--> `NAV_LINKS`  [INFERRED]
-  DOCUMENTATION/PRD.md → frontend/src/components/Navbar.jsx
-- `Curated Tech Stack Selection` --conceptually_related_to--> `TECH_STACK`  [INFERRED]
-  README.md → frontend/src/pages/About.jsx
+- `Agra Taj Mahal Destination Image` --references--> `DestinationDetails()`  [INFERRED]
+  frontend/public/images/destinations/agra.jpg → frontend/src/pages/DestinationDetails.jsx
+- `Goa Beach Coastline Destination Image` --references--> `DestinationCard()`  [INFERRED]
+  frontend/public/images/destinations/goa.jpg → frontend/src/components/DestinationCard.jsx
+- `handleDelete()` --calls--> `deleteTrip()`  [EXTRACTED]
+  frontend/src/components/TripCard.jsx → frontend/src/services/api.js
+- `Airplane Favicon Graphic` --references--> `HTML5 Web Application Shell`  [EXTRACTED]
+  frontend/public/favicon.svg → frontend/index.html
+- `getDestination()` --calls--> `getDestinationById()`  [EXTRACTED]
+  frontend/src/services/api.js → frontend/src/data/travelData.js
 
 ## Import Cycles
 - None detected.
 
-## Hyperedges (group relationships)
-- **External Travel API Delegation Architecture** — documentation_api_documentation_railradar_integration, documentation_api_documentation_amadeus_integration, documentation_api_documentation_gemini_integration, documentation_api_documentation_weather_integration, backend_cors [INFERRED 0.85]
-- **Three Tier Full-Stack Architecture Pipeline** — documentation_trd_three_layer_architecture, frontend_src_services_api, backend_db, database_travel_planner [EXTRACTED 1.00]
-- **Destination Browsing and Details Catalog Pipeline** — frontend_src_pages_destinations_destinations, frontend_src_pages_destinationdetails_destinationdetails, backend_destinations_getalldestinations, database_travel_planner_destinations [EXTRACTED 1.00]
+## Communities (41 total, 3 thin omitted)
 
-## Communities (26 total, 13 thin omitted)
+### Community 0 - "App.jsx"
+Cohesion: 0.09
+Nodes (23): HTML5 Web Application Shell, Airplane Favicon Graphic, App(), Footer(), About(), PAGES, TECH_STACK, FEATURES (+15 more)
 
-### Community 0 - "External Services & PRD Specs"
-Cohesion: 0.10
-Nodes (27): Amadeus Flights API Integration, Gemini AI Itinerary Integration, RailRadar API Integration, Live Weather Integration, Product Requirements Document (PRD), Project Overview & Course Principles, Budget Calculation Formula Verification, External API Graceful Degradation Strategy (+19 more)
+### Community 1 - "api.js"
+Cohesion: 0.15
+Nodes (27): getSpecificDestinationGuide(), getSpecificRouteData(), DESTINATIONS_DATA, getDestinationById(), getPlacesByDestinationId(), POPULAR_SOURCE_CITIES, calcDays(), fmtDate() (+19 more)
 
-### Community 1 - "TypeScript Configuration"
+### Community 2 - "useAuth"
+Cohesion: 0.13
+Nodes (23): UI SVG Sprite Icon Library, AUTH_LINKS, Navbar(), handleLogout(), PUBLIC_LINKS, AuthContext, AuthProvider(), login() (+15 more)
+
+### Community 3 - "package.json"
+Cohesion: 0.08
+Nodes (24): axios, dependencies, axios, react, react-dom, react-router-dom, @vitejs/plugin-react, devDependencies (+16 more)
+
+### Community 4 - "compilerOptions"
 Cohesion: 0.09
 Nodes (21): compilerOptions, allowArbitraryExtensions, allowImportingTsExtensions, erasableSyntaxOnly, lib, module, moduleDetection, moduleResolution (+13 more)
 
-### Community 2 - "Destination Catalog Components"
-Cohesion: 0.16
-Nodes (14): Uniform JSON Response Envelope Protocol, Agra Taj Mahal Destination Image, Goa Beach Coastline Destination Image, CATEGORY_ICONS, DestinationCard(), CATEGORY_ICONS, CATEGORY_TAGS, DestinationDetails() (+6 more)
+### Community 5 - "getDestination"
+Cohesion: 0.17
+Nodes (15): Agra Taj Mahal Destination Image, HotelCard(), CATEGORY_ICONS, PlaceCard(), CATEGORY_ICONS, CATEGORY_TAGS, DestinationDetails(), fetchDestinationData() (+7 more)
 
-### Community 3 - "MySQL Relational Schema"
-Cohesion: 0.15
-Nodes (16): contact_messages, destinations, hotels, itinerary, places, trips, users, Contact Messages Entity Specification (+8 more)
-
-### Community 4 - "Frontend Tooling & Scripts"
-Cohesion: 0.13
-Nodes (14): Beginner Friendly Architecture Principle, devDependencies, typescript, vite, name, private, scripts, build (+6 more)
-
-### Community 5 - "React Runtime Dependencies"
+### Community 6 - "getDestinations"
 Cohesion: 0.18
-Nodes (11): axios, dependencies, axios, react, react-dom, react-router-dom, @vitejs/plugin-react, react (+3 more)
+Nodes (12): Goa Beach Coastline Destination Image, CATEGORY_ICONS, DestinationCard(), AIRecommendation(), handleSubmit(), inlineFormat(), renderMarkdown(), CATEGORIES (+4 more)
 
-### Community 6 - "Destination Media & SQL Seeds"
+### Community 7 - "TrainSearch.jsx"
+Cohesion: 0.22
+Nodes (8): StationInput(), ALL_DAYS, TrainCard(), filterStations(), INDIAN_STATIONS, POPULAR_ROUTES, TrainSearch(), searchTrains()
+
+### Community 8 - "MyTrips.jsx"
+Cohesion: 0.29
+Nodes (8): calcDays(), fmtDate(), getTripStatus(), TripCard(), handleDelete(), MyTrips(), fetchTripList(), getTrips()
+
+### Community 9 - "BudgetCalculator"
+Cohesion: 0.27
+Nodes (6): BudgetCalculator(), pct(), CATEGORIES, formatINR(), INITIAL_BUDGET, toNum()
+
+### Community 10 - "TrainStatus.jsx"
+Cohesion: 0.39
+Nodes (8): fmtTime(), getStatusInfo(), haltIcon(), relativeTime(), TrainStatus(), fetchLiveStatus(), validate(), getLiveTrainStatus()
+
+### Community 11 - "supabase_schema_and_data.sql"
+Cohesion: 0.43
+Nodes (7): contact_messages, destinations, hotels, itinerary, places, trips, users
+
+### Community 12 - "travel_planner.sql"
+Cohesion: 0.43
+Nodes (7): contact_messages, destinations, hotels, itinerary, places, trips, users
+
+### Community 13 - "trips.php"
+Cohesion: 0.48
+Nodes (5): createTrip(), getAllTrips(), getOneTrip(), hasSourceLocationColumn(), updateTrip()
+
+### Community 14 - "phase2_destinations.sql"
 Cohesion: 0.29
 Nodes (6): Delhi Red Fort Destination Image, Jaipur Hawa Mahal Destination Image, Manali Snow Mountains Destination Image, Mumbai Gateway of India Destination Image, Munnar Tea Plantations Destination Image, Varanasi Ghats Destination Image
 
-### Community 7 - "Navigation Bar & UI Sprite"
-Cohesion: 0.33
-Nodes (5): Travel Planner User Journey Flow, Navbar & Secondary Route Hierarchy, UI SVG Sprite Icon Library, NAV_LINKS, Navbar()
+### Community 15 - "AIItineraryDisplay.jsx"
+Cohesion: 0.53
+Nodes (4): AIItineraryDisplay(), escapeHtml(), formatInline(), renderItineraryHtml()
 
-### Community 8 - "Database Layer & Architecture"
-Cohesion: 0.40
-Nodes (4): Core Functional Requirements Specification, System Requirements Specification, Security Audit & SQL Injection Defense, 3-Layer Architecture Specification
+### Community 18 - "complete_production_database.sql"
+Cohesion: 0.50
+Nodes (3): `contact_messages`, `destinations`, `hotels`
 
-### Community 10 - "About Page & Tech Showcase"
-Cohesion: 0.40
-Nodes (4): Curated Tech Stack Selection, About(), PAGES, TECH_STACK
+### Community 19 - "phase3_places_hotels.sql"
+Cohesion: 0.67
+Nodes (3): hotels, places, destinations
 
-### Community 11 - "App Shell & Routing Hierarchy"
-Cohesion: 0.40
-Nodes (4): 19 UI Page Routing Specification, HTML5 Web Application Shell, Airplane Favicon Graphic, App()
-
-### Community 12 - "Home Page & Feature Showcase"
-Cohesion: 0.40
-Nodes (4): FEATURES, Home(), SAMPLE_DESTINATIONS, STEPS
+### Community 20 - "trips"
+Cohesion: 0.50
+Nodes (3): destinations, trips, users
 
 ## Knowledge Gaps
-- **84 isolated node(s):** `name`, `private`, `version`, `type`, `dev` (+79 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 95 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **70 isolated node(s):** `PAGES`, `TECH_STACK`, `FEATURES`, `SAMPLE_DESTINATIONS`, `STEPS` (+65 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 115 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **3 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `3-Layer Architecture Specification` connect `Database Layer & Architecture` to `Destination Catalog Components`?**
-  _High betweenness centrality (0.022) - this node is a cross-community bridge._
-- **Why does `Repository Directory Layout` connect `Destination REST Endpoints` to `External Services & PRD Specs`?**
+- **Why does `TripPlanner()` connect `api.js` to `App.jsx`, `useAuth`, `getDestinations`?**
   _High betweenness centrality (0.021) - this node is a cross-community bridge._
-- **What connects `name`, `private`, `version` to the rest of the system?**
-  _84 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `External Services & PRD Specs` be split into smaller, more focused modules?**
-  _Cohesion score 0.09879032258064516 - nodes in this community are weakly interconnected._
-- **Should `TypeScript Configuration` be split into smaller, more focused modules?**
-  _Cohesion score 0.09090909090909091 - nodes in this community are weakly interconnected._
-- **Should `Frontend Tooling & Scripts` be split into smaller, more focused modules?**
-  _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
+- **Why does `BudgetCalculator()` connect `BudgetCalculator` to `App.jsx`?**
+  _High betweenness centrality (0.019) - this node is a cross-community bridge._
+- **Why does `TripDetails()` connect `api.js` to `App.jsx`, `useAuth`?**
+  _High betweenness centrality (0.012) - this node is a cross-community bridge._
+- **What connects `PAGES`, `TECH_STACK`, `FEATURES` to the rest of the system?**
+  _70 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `App.jsx` be split into smaller, more focused modules?**
+  _Cohesion score 0.0855614973262032 - nodes in this community are weakly interconnected._
+- **Should `api.js` be split into smaller, more focused modules?**
+  _Cohesion score 0.1497326203208556 - nodes in this community are weakly interconnected._
+- **Should `useAuth` be split into smaller, more focused modules?**
+  _Cohesion score 0.1349206349206349 - nodes in this community are weakly interconnected._

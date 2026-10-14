@@ -1,12 +1,16 @@
 <?php
 /**
- * index.php
+ * index.php — Root API Gateway & System Health Check
  *
- * Health check & root API status endpoint for Travel Journey Planner backend.
+ * Provides a discovery index of all available REST endpoints and checks
+ * database connectivity status. Useful for verifying deployment health.
  */
+
+// Load CORS headers and environment configuration
 require_once 'cors.php';
 require_once 'config.php';
 
+// --- Database Connectivity Verification ---
 $dbStatus = 'untested';
 $dbMessage = '';
 
@@ -21,6 +25,7 @@ try {
     $dbMessage = $e->getMessage();
 }
 
+// --- Output System Discovery & Endpoint Map ---
 echo json_encode([
     'service'     => 'Travel Journey Planner API',
     'status'      => 'online',

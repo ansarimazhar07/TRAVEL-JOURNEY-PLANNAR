@@ -1,9 +1,9 @@
 /**
- * Login.jsx — Phase 4
+ * Login.jsx — User Login & Session Initialization View
  *
  * Route: /login
- * Allows users to log in with email + password.
- * On success, stores user in AuthContext and navigates to /.
+ * Allows registered users to authenticate using email and password.
+ * On success, stores authenticated user in AuthContext and navigates to user profile.
  */
 
 import React, { useState, useEffect } from 'react'

@@ -37,8 +37,8 @@ function Footer() {
           <div className="footer-col">
             <h4>Services</h4>
             <ul>
-              <li><Link to="/plan-trip">Plan a Trip</Link></li>
-              <li><Link to="/ai-recommendation">AI Recommendations</Link></li>
+              <li><Link to="/plan-trip">Plan a Trip (Gemini AI)</Link></li>
+              <li><Link to="/my-trips">My Planned Trips</Link></li>
               <li><Link to="/budget">Budget Calculator</Link></li>
               <li><Link to="/contact">Contact Us</Link></li>
               <li><Link to="/about">About</Link></li>

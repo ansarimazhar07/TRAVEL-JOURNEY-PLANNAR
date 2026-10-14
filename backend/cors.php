@@ -1,18 +1,20 @@
 <?php
 /**
- * cors.php
+ * cors.php — Cross-Origin Resource Sharing (CORS) & Preflight Middleware
  * 
- * Sets CORS headers so the React frontend
- * can make requests to this PHP backend.
- * 
- * Supports localhost dev server on any port (5173, 5174, 5175, etc.).
+ * Sets HTTP headers enabling the React single-page frontend (running on Vite dev ports
+ * or production domains) to communicate asynchronously with this PHP backend.
+ * Handles HTTP OPTIONS preflight handshakes required for complex cross-origin requests.
  */
 
+// --- Dynamic Origin Inspection ---
+// Read the incoming HTTP Origin header sent by the client's browser
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
-$allowedOrigin = 'http://localhost:5173';
+$allowedOrigin = 'http://localhost:5173'; // Default local development client origin
 
 $frontendUrl = getenv('FRONTEND_URL') ?: getenv('ALLOWED_ORIGIN');
 
+// Validate if the requesting origin matches localhost development or authorized deployment domains
 if ($origin !== '') {
     if (
         preg_match('/^https?:\/\/localhost(:\d+)?$/', $origin) ||
@@ -25,13 +27,18 @@ if ($origin !== '') {
     }
 }
 
+// --- Emit CORS Security & Response Type Headers ---
 header("Access-Control-Allow-Origin: $allowedOrigin");
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, Origin, Accept');
-header('Access-Control-Allow-Credentials: true');   // Required for cross-site auth/sessions
+// Required so the browser will transmit and accept session cookies (PHPSESSID) across origins
+header('Access-Control-Allow-Credentials: true');
+// Standardize API response format as JSON encoded in UTF-8
 header('Content-Type: application/json; charset=utf-8');
 
-// Handle browser pre-flight OPTIONS request
+// --- HTTP OPTIONS Preflight Responder ---
+// Browsers send an automated OPTIONS request before POST/PUT/DELETE to verify server permissions.
+// Returning 200 OK immediately authorizes the subsequent real API request.
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit;

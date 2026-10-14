@@ -85,6 +85,7 @@ CREATE TABLE IF NOT EXISTS trips (
     user_id         INT            NOT NULL,
     destination_id  INT,
     trip_name       VARCHAR(200),
+    source_location VARCHAR(150),
     start_date      DATE           NOT NULL,
     end_date        DATE           NOT NULL,
     num_travellers  INT            DEFAULT 1,

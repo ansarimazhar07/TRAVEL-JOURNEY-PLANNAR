@@ -1,74 +1,81 @@
 <?php
 /**
- * auth/login.php
+ * auth/login.php — User Authentication & Session Creation Endpoint
  *
  * POST /auth/login.php
- * Logs the user in by verifying credentials and starting a PHP session.
+ * Authenticates user credentials by querying MySQL with a parameterized PDO statement,
+ * verifying the password against a bcrypt hash, and establishing a persistent PHP session.
  *
- * Request body (JSON):
- *   { "email": "...", "password": "..." }
+ * Request Body (JSON):
+ *   { "email": "traveler@example.com", "password": "secretPassword" }
  *
- * Response (success):
- *   { "success": true, "message": "Login successful", "user": { id, name, email } }
+ * Response (Success - 200 OK):
+ *   { "success": true, "message": "Login successful.", "user": { "id": 1, "name": "...", "email": "..." } }
  *
- * Response (failure):
- *   { "success": false, "message": "Invalid email or password" }
+ * Response (Failure - 401 Unauthorized):
+ *   { "success": false, "message": "Invalid email or password." }
  */
 
-// Start session with secure cross-origin settings
+// --- Session & Security Middleware ---
+// Start or resume session with secure cookie flags (HttpOnly, SameSite)
 require_once __DIR__ . '/../session.php';
-
-// Include CORS headers and database connection
+// Set CORS headers and establish PDO database connection
 require_once '../cors.php';
 require_once '../db.php';
 
-// Only accept POST requests
+// --- HTTP Method Enforcement ---
+// Restrict endpoint to POST requests only
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     echo json_encode(['success' => false, 'message' => 'Method not allowed.']);
     exit;
 }
 
-// Read and decode the JSON body sent by React
+// --- Request Body Parsing ---
+// Read raw php://input stream and decode JSON sent by React fetch client
 $body = json_decode(file_get_contents('php://input'), true);
 
-// Extract fields
+// Extract and sanitize input fields
 $email    = isset($body['email'])    ? trim($body['email'])    : '';
 $password = isset($body['password']) ? trim($body['password']) : '';
 
-// ---- Basic input validation ----
-
+// --- Input Validation ---
+// Reject empty fields before executing database queries
 if (empty($email) || empty($password)) {
     echo json_encode(['success' => false, 'message' => 'Please enter your email and password.']);
     exit;
 }
 
+// Validate email format using PHP's built-in filter
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     echo json_encode(['success' => false, 'message' => 'Invalid email or password.']);
     exit;
 }
 
-// ---- Find user by email (using prepared statement) ----
+// --- Database Verification & Credential Matching ---
 try {
+    // Parameterized prepared query to prevent SQL Injection
     $stmt = $conn->prepare("SELECT id, name, email, password FROM users WHERE email = ?");
     $stmt->execute([$email]);
     $user = $stmt->fetch();
 
-    // If no user found OR password doesn't match — give the same error message
-    // (Do NOT say "email not found" or "wrong password" separately — security best practice)
+    // Security Best Practice: Use a generic error message whether the user exists or the password was wrong
+    // This prevents username/email enumeration attacks.
+    // password_verify() safely checks the plain text against the bcrypt hash with salt.
     if (!$user || !password_verify($password, $user['password'])) {
         http_response_code(401);
         echo json_encode(['success' => false, 'message' => 'Invalid email or password.']);
         exit;
     }
 
-    // ---- Create PHP session ----
-    // Store only basic info — never store the password
+    // --- Session Persistence ---
+    // Store authenticated user ID and name in server-side session
+    // Passwords or sensitive hashes are NEVER stored in the session
     $_SESSION['user_id']    = $user['id'];
     $_SESSION['user_name']  = $user['name'];
     $_SESSION['user_email'] = $user['email'];
 
-    // Return user info (without password)
+    // --- Return Success Payload to Frontend ---
     echo json_encode([
         'success' => true,
         'message' => 'Login successful.',

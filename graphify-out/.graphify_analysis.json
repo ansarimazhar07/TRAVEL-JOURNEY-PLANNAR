@@ -1,46 +1,40 @@
 {
   "communities": {
     "0": [
-      "backend_destinations",
-      "backend_destinations_getalldestinations",
-      "backend_destinations_getonedestination",
-      "documentation_api_documentation_amadeus_integration",
-      "documentation_api_documentation_gemini_integration",
-      "documentation_api_documentation_railradar_integration",
-      "documentation_api_documentation_rest_api_layer",
-      "documentation_api_documentation_weather_integration",
-      "documentation_prd_travel_journey_planner_product",
-      "documentation_project_structure_repository_layout",
-      "documentation_readme_course_project_overview",
-      "documentation_trd_graceful_degradation",
-      "documentation_ui_pages_routes_specification",
-      "frontend_index_html_shell",
-      "frontend_public_favicon_favicon_plane",
-      "frontend_src_app",
-      "frontend_src_app_app",
-      "frontend_src_app_layout",
-      "frontend_src_components_footer",
-      "frontend_src_components_footer_footer",
-      "frontend_src_main",
-      "frontend_src_pages_home",
-      "frontend_src_pages_home_features",
-      "frontend_src_pages_home_home",
-      "frontend_src_pages_home_sample_destinations",
-      "frontend_src_pages_home_steps",
-      "frontend_src_pages_placeholders",
-      "frontend_src_pages_placeholders_airecommendation",
-      "frontend_src_pages_placeholders_comingsoon",
-      "frontend_src_pages_placeholders_contact",
-      "frontend_src_pages_placeholders_flightsearch",
-      "frontend_src_pages_placeholders_hoteldetails",
-      "frontend_src_pages_placeholders_hotels",
-      "frontend_src_pages_placeholders_itinerary",
-      "frontend_src_pages_placeholders_notfound",
-      "frontend_src_pages_placeholders_placedetails",
-      "frontend_src_pages_placeholders_places",
-      "frontend_src_pages_placeholders_trainsearch",
-      "frontend_src_pages_placeholders_weather",
-      "readme_project_introduction"
+      "frontend_src_data_routeplannerdata",
+      "frontend_src_data_routeplannerdata_getspecificdestinationguide",
+      "frontend_src_data_routeplannerdata_getspecificroutedata",
+      "frontend_src_data_traveldata",
+      "frontend_src_data_traveldata_destinations_data",
+      "frontend_src_data_traveldata_getdestinationbyid",
+      "frontend_src_data_traveldata_getplacesbydestinationid",
+      "frontend_src_data_traveldata_popular_source_cities",
+      "frontend_src_pages_tripdetails",
+      "frontend_src_pages_tripdetails_calcdays",
+      "frontend_src_pages_tripdetails_fmtdate",
+      "frontend_src_pages_tripdetails_getstatusbadge",
+      "frontend_src_pages_tripdetails_tripdetails",
+      "frontend_src_pages_tripdetails_tripdetails_handledelete",
+      "frontend_src_pages_tripdetails_tripdetails_handlegenerateai",
+      "frontend_src_pages_tripplanner",
+      "frontend_src_pages_tripplanner_calcdays",
+      "frontend_src_pages_tripplanner_popular_destinations",
+      "frontend_src_pages_tripplanner_travel_styles",
+      "frontend_src_pages_tripplanner_tripplanner",
+      "frontend_src_pages_tripplanner_tripplanner_handledestinationchange",
+      "frontend_src_pages_tripplanner_tripplanner_handlegenerateaiplan",
+      "frontend_src_pages_tripplanner_tripplanner_handleselectdestinationchip",
+      "frontend_src_pages_tripplanner_tripplanner_handlesubmit",
+      "frontend_src_pages_tripplanner_tripplanner_validate",
+      "frontend_src_services_api",
+      "frontend_src_services_api_api_url",
+      "frontend_src_services_api_createtrip",
+      "frontend_src_services_api_deletetrip",
+      "frontend_src_services_api_generateaitripplan",
+      "frontend_src_services_api_getlocaltrips",
+      "frontend_src_services_api_gettrip",
+      "frontend_src_services_api_savelocaltrips",
+      "frontend_src_services_api_updatetrip"
     ],
     "1": [
       "frontend_public_icons_ui_svg_sprite",
@@ -48,7 +42,6 @@
       "frontend_src_components_navbar_auth_links",
       "frontend_src_components_navbar_navbar",
       "frontend_src_components_navbar_navbar_handlelogout",
-      "frontend_src_components_navbar_navbar_navitem",
       "frontend_src_components_navbar_public_links",
       "frontend_src_context_authcontext",
       "frontend_src_context_authcontext_authcontext",
@@ -60,9 +53,6 @@
       "frontend_src_pages_login_login",
       "frontend_src_pages_login_login_handlesubmit",
       "frontend_src_pages_login_login_validate",
-      "frontend_src_pages_mytrips",
-      "frontend_src_pages_mytrips_mytrips",
-      "frontend_src_pages_mytrips_mytrips_handletripdeleted",
       "frontend_src_pages_profile",
       "frontend_src_pages_profile_profile",
       "frontend_src_pages_profile_profile_handlelogout",
@@ -70,17 +60,14 @@
       "frontend_src_pages_register_register",
       "frontend_src_pages_register_register_handlesubmit",
       "frontend_src_pages_register_register_validate",
-      "frontend_src_services_api",
       "frontend_src_services_api_checkauth",
       "frontend_src_services_api_getprofile",
-      "frontend_src_services_api_gettrips",
       "frontend_src_services_api_loginuser",
       "frontend_src_services_api_logoutuser",
       "frontend_src_services_api_registeruser"
     ],
     "2": [
       "axios",
-      "documentation_project_structure_simplicity_principle",
       "frontend_package",
       "frontend_package_dependencies",
       "frontend_package_dependencies_axios",
@@ -107,28 +94,30 @@
       "vitejs_plugin_react"
     ],
     "3": [
-      "documentation_trd_json_api_protocol",
-      "frontend_public_images_destinations_goa_hero",
-      "frontend_src_components_destinationcard",
-      "frontend_src_components_destinationcard_category_icons",
-      "frontend_src_components_destinationcard_destinationcard",
-      "frontend_src_pages_airecommendation",
-      "frontend_src_pages_airecommendation_airecommendation",
-      "frontend_src_pages_airecommendation_airecommendation_handlesubmit",
-      "frontend_src_pages_airecommendation_inlineformat",
-      "frontend_src_pages_airecommendation_rendermarkdown",
-      "frontend_src_pages_destinations",
-      "frontend_src_pages_destinations_categories",
-      "frontend_src_pages_destinations_destinations",
-      "frontend_src_pages_destinations_destinations_fetchdestinations",
-      "frontend_src_pages_tripplanner",
-      "frontend_src_pages_tripplanner_tripplanner",
-      "frontend_src_pages_tripplanner_tripplanner_handlesubmit",
-      "frontend_src_pages_tripplanner_tripplanner_validate",
-      "frontend_src_services_api_createtrip",
-      "frontend_src_services_api_generateairecommendation",
-      "frontend_src_services_api_getdestinations",
-      "frontend_src_services_api_updatetrip"
+      "frontend_index_html_shell",
+      "frontend_public_favicon_favicon_plane",
+      "frontend_src_app",
+      "frontend_src_app_app",
+      "frontend_src_app_layout",
+      "frontend_src_components_footer",
+      "frontend_src_components_footer_footer",
+      "frontend_src_main",
+      "frontend_src_pages_about",
+      "frontend_src_pages_about_about",
+      "frontend_src_pages_about_pages",
+      "frontend_src_pages_about_tech_stack",
+      "frontend_src_pages_home",
+      "frontend_src_pages_home_features",
+      "frontend_src_pages_home_home",
+      "frontend_src_pages_home_sample_destinations",
+      "frontend_src_pages_home_steps",
+      "frontend_src_pages_placeholders",
+      "frontend_src_pages_placeholders_comingsoon",
+      "frontend_src_pages_placeholders_contact",
+      "frontend_src_pages_placeholders_flightsearch",
+      "frontend_src_pages_placeholders_itinerary",
+      "frontend_src_pages_placeholders_notfound",
+      "frontend_src_pages_placeholders_weather"
     ],
     "4": [
       "frontend_tsconfig",
@@ -166,7 +155,7 @@
       "frontend_src_pages_destinationdetails_category_icons",
       "frontend_src_pages_destinationdetails_category_tags",
       "frontend_src_pages_destinationdetails_destinationdetails",
-      "frontend_src_pages_destinationdetails_destinationdetails_fetchdestination",
+      "frontend_src_pages_destinationdetails_destinationdetails_fetchdestinationdata",
       "frontend_src_pages_hotels",
       "frontend_src_pages_hotels_hotels",
       "frontend_src_pages_hotels_hotels_fetchdata",
@@ -178,23 +167,22 @@
       "frontend_src_services_api_getplaces"
     ],
     "6": [
-      "database_travel_planner",
-      "database_travel_planner_contact_messages",
-      "database_travel_planner_destinations",
-      "database_travel_planner_hotels",
-      "database_travel_planner_itinerary",
-      "database_travel_planner_places",
-      "database_travel_planner_trips",
-      "database_travel_planner_users",
-      "documentation_database_contact_message_entity",
-      "documentation_database_destination_entity",
-      "documentation_database_hotel_entity",
-      "documentation_database_itinerary_entity",
-      "documentation_database_place_entity",
-      "documentation_database_schema_design",
-      "documentation_database_trip_entity",
-      "documentation_database_user_entity",
-      "documentation_setup_database_import_step"
+      "frontend_public_images_destinations_goa_hero",
+      "frontend_src_components_destinationcard",
+      "frontend_src_components_destinationcard_category_icons",
+      "frontend_src_components_destinationcard_destinationcard",
+      "frontend_src_pages_airecommendation",
+      "frontend_src_pages_airecommendation_airecommendation",
+      "frontend_src_pages_airecommendation_airecommendation_handlesubmit",
+      "frontend_src_pages_airecommendation_inlineformat",
+      "frontend_src_pages_airecommendation_rendermarkdown",
+      "frontend_src_pages_destinations",
+      "frontend_src_pages_destinations_categories",
+      "frontend_src_pages_destinations_destinations",
+      "frontend_src_pages_destinations_destinations_fetchdestinations",
+      "frontend_src_pages_destinations_destinations_handleclearfilters",
+      "frontend_src_services_api_generateairecommendation",
+      "frontend_src_services_api_getdestinations"
     ],
     "7": [
       "frontend_src_components_stationinput",
@@ -215,15 +203,14 @@
       "frontend_src_components_tripcard",
       "frontend_src_components_tripcard_calcdays",
       "frontend_src_components_tripcard_fmtdate",
+      "frontend_src_components_tripcard_gettripstatus",
       "frontend_src_components_tripcard_tripcard",
       "frontend_src_components_tripcard_tripcard_handledelete",
-      "frontend_src_pages_tripdetails",
-      "frontend_src_pages_tripdetails_calcdays",
-      "frontend_src_pages_tripdetails_fmtdate",
-      "frontend_src_pages_tripdetails_tripdetails",
-      "frontend_src_pages_tripdetails_tripdetails_handledelete",
-      "frontend_src_services_api_deletetrip",
-      "frontend_src_services_api_gettrip"
+      "frontend_src_pages_mytrips",
+      "frontend_src_pages_mytrips_mytrips",
+      "frontend_src_pages_mytrips_mytrips_fetchtriplist",
+      "frontend_src_pages_mytrips_mytrips_handletripdeleted",
+      "frontend_src_services_api_gettrips"
     ],
     "9": [
       "frontend_src_pages_budgetcalculator",
@@ -249,6 +236,35 @@
       "frontend_src_services_api_getlivetrainstatus"
     ],
     "11": [
+      "database_supabase_schema_and_data",
+      "database_supabase_schema_and_data_contact_messages",
+      "database_supabase_schema_and_data_destinations",
+      "database_supabase_schema_and_data_hotels",
+      "database_supabase_schema_and_data_itinerary",
+      "database_supabase_schema_and_data_places",
+      "database_supabase_schema_and_data_trips",
+      "database_supabase_schema_and_data_users"
+    ],
+    "12": [
+      "database_travel_planner",
+      "database_travel_planner_contact_messages",
+      "database_travel_planner_destinations",
+      "database_travel_planner_hotels",
+      "database_travel_planner_itinerary",
+      "database_travel_planner_places",
+      "database_travel_planner_trips",
+      "database_travel_planner_users"
+    ],
+    "13": [
+      "backend_trips",
+      "backend_trips_createtrip",
+      "backend_trips_deletetrip",
+      "backend_trips_getalltrips",
+      "backend_trips_getonetrip",
+      "backend_trips_hassourcelocationcolumn",
+      "backend_trips_updatetrip"
+    ],
+    "14": [
       "database_phase2_destinations",
       "frontend_public_images_destinations_delhi_hero",
       "frontend_public_images_destinations_jaipur_hero",
@@ -257,34 +273,13 @@
       "frontend_public_images_destinations_munnar_hero",
       "frontend_public_images_destinations_varanasi_hero"
     ],
-    "12": [
-      "backend_trips",
-      "backend_trips_createtrip",
-      "backend_trips_deletetrip",
-      "backend_trips_getalltrips",
-      "backend_trips_getonetrip",
-      "backend_trips_updatetrip"
-    ],
-    "13": [
-      "backend_db",
-      "documentation_prd_functional_specs",
-      "documentation_requirements_core_requirements",
-      "documentation_testing_security_audit_checklist",
-      "documentation_trd_three_layer_architecture"
-    ],
-    "14": [
-      "database_phase4_auth",
-      "database_phase4_auth_users",
-      "database_phase5_trips",
-      "database_phase5_trips_sql_destinations",
-      "database_phase5_trips_trips"
-    ],
     "15": [
-      "documentation_readme_tech_stack_selection",
-      "frontend_src_pages_about",
-      "frontend_src_pages_about_about",
-      "frontend_src_pages_about_pages",
-      "frontend_src_pages_about_tech_stack"
+      "frontend_src_components_aiitinerarydisplay",
+      "frontend_src_components_aiitinerarydisplay_aiitinerarydisplay",
+      "frontend_src_components_aiitinerarydisplay_aiitinerarydisplay_handlecopy",
+      "frontend_src_components_aiitinerarydisplay_escapehtml",
+      "frontend_src_components_aiitinerarydisplay_formatinline",
+      "frontend_src_components_aiitinerarydisplay_renderitineraryhtml"
     ],
     "16": [
       "frontend_src_pages_hoteldetails",
@@ -313,120 +308,118 @@
       "backend_places_getplacesbydestination"
     ],
     "20": [
+      "database_complete_production_database",
+      "database_complete_production_database_contact_messages",
+      "database_complete_production_database_destinations",
+      "database_complete_production_database_hotels"
+    ],
+    "21": [
       "database_phase3_places_hotels",
       "database_phase3_places_hotels_hotels",
       "database_phase3_places_hotels_places",
       "database_phase3_places_hotels_sql_destinations"
     ],
-    "21": [
-      "backend_cors",
-      "documentation_api_documentation_api_key_security_rule",
-      "readme_api_key_registry"
-    ],
     "22": [
+      "database_phase5_trips",
+      "database_phase5_trips_sql_destinations",
+      "database_phase5_trips_trips",
+      "users"
+    ],
+    "23": [
+      "backend_destinations",
+      "backend_destinations_getalldestinations",
+      "backend_destinations_getonedestination"
+    ],
+    "24": [
+      "backend_route_planner_data",
+      "backend_route_planner_data_getspecificdestinationguide",
+      "backend_route_planner_data_getspecificroutedata"
+    ],
+    "25": [
       "backend_trains",
       "backend_trains_formatminutestohours",
       "backend_trains_resolvestationcode"
     ],
-    "23": [
-      "documentation_setup_dev_order_workflow",
-      "readme_development_phases"
-    ],
-    "24": [
-      "documentation_setup_environment_setup_guide",
-      "setup_backend"
-    ],
-    "25": [
-      "backend_ai"
-    ],
     "26": [
-      "backend_auth_check"
+      "database_phase4_auth",
+      "database_phase4_auth_users"
     ],
     "27": [
-      "backend_auth_login"
+      "backend_ai"
     ],
     "28": [
-      "backend_auth_logout"
+      "backend_auth_check"
     ],
     "29": [
-      "backend_auth_profile"
+      "backend_auth_login"
     ],
     "30": [
-      "backend_auth_register"
+      "backend_auth_logout"
     ],
     "31": [
-      "backend_train_live"
+      "backend_auth_profile"
     ],
     "32": [
-      "database_phase3_seed_data"
+      "backend_auth_register"
     ],
     "33": [
-      "documentation_database_small_db_principle"
+      "backend_cors"
     ],
     "34": [
-      "documentation_future_scope_booking_engine_scope"
+      "backend_db"
     ],
     "35": [
-      "documentation_future_scope_future_enhancements"
+      "backend_index"
     ],
     "36": [
-      "documentation_prd_project_scope"
+      "backend_session"
     ],
     "37": [
-      "documentation_prd_user_journey_flow"
+      "backend_train_live"
     ],
     "38": [
-      "documentation_requirements_api_dependency_risk"
+      "database_phase2_destinations_sql_destinations"
     ],
     "39": [
-      "documentation_requirements_hardware_specs"
+      "database_phase3_seed_data"
     ],
     "40": [
-      "documentation_testing_budget_calculation_verification"
-    ],
-    "41": [
-      "documentation_testing_test_suite_specification"
-    ],
-    "42": [
-      "documentation_trd_security_architecture"
-    ],
-    "43": [
-      "documentation_ui_pages_navigation_hierarchy"
-    ],
-    "44": [
       "frontend_index_google_fonts_asset"
     ],
-    "45": [
+    "41": [
       "frontend_vite_config"
+    ],
+    "42": [
+      "setup_backend"
     ]
   },
   "cohesion": {
-    "0": 0.057692307692307696,
-    "1": 0.1265597147950089,
-    "2": 0.07692307692307693,
-    "3": 0.1471861471861472,
+    "0": 0.1497326203208556,
+    "1": 0.1349206349206349,
+    "2": 0.08,
+    "3": 0.10869565217391304,
     "4": 0.09090909090909091,
-    "5": 0.1523809523809524,
-    "6": 0.15441176470588236,
-    "7": 0.20512820512820512,
-    "8": 0.30303030303030304,
+    "5": 0.16666666666666666,
+    "6": 0.18333333333333332,
+    "7": 0.21794871794871795,
+    "8": 0.2909090909090909,
     "9": 0.26666666666666666,
     "10": 0.3888888888888889,
-    "11": 0.2857142857142857,
-    "12": 0.3333333333333333,
-    "13": 0.4,
-    "14": 0.4,
-    "15": 0.4,
+    "11": 0.42857142857142855,
+    "12": 0.42857142857142855,
+    "13": 0.47619047619047616,
+    "14": 0.2857142857142857,
+    "15": 0.5333333333333333,
     "16": 0.6,
     "17": 0.6,
     "18": 0.5,
     "19": 0.5,
-    "20": 0.6666666666666666,
+    "20": 0.5,
     "21": 0.6666666666666666,
-    "22": 0.6666666666666666,
-    "23": 1.0,
-    "24": 1.0,
-    "25": 1.0,
+    "22": 0.5,
+    "23": 0.6666666666666666,
+    "24": 0.6666666666666666,
+    "25": 0.6666666666666666,
     "26": 1.0,
     "27": 1.0,
     "28": 1.0,
@@ -443,10 +436,7 @@
     "39": 1.0,
     "40": 1.0,
     "41": 1.0,
-    "42": 1.0,
-    "43": 1.0,
-    "44": 1.0,
-    "45": 1.0
+    "42": 1.0
   },
   "gods": [
     {
@@ -455,106 +445,106 @@
       "degree": 16
     },
     {
+      "id": "frontend_src_pages_tripplanner_tripplanner",
+      "label": "TripPlanner()",
+      "degree": 15
+    },
+    {
       "id": "frontend_src_context_authcontext_useauth",
       "label": "useAuth()",
       "degree": 15
     },
     {
+      "id": "frontend_src_pages_tripdetails_tripdetails",
+      "label": "TripDetails()",
+      "degree": 13
+    },
+    {
       "id": "frontend_src_services_api_getdestination",
       "label": "getDestination()",
+      "degree": 11
+    },
+    {
+      "id": "frontend_src_services_api_generateaitripplan",
+      "label": "generateAITripPlan()",
       "degree": 10
     },
     {
-      "id": "frontend_src_services_api_getdestinations",
-      "label": "getDestinations()",
+      "id": "frontend_src_services_api_updatetrip",
+      "label": "updateTrip()",
       "degree": 9
     },
     {
-      "id": "frontend_src_pages_tripplanner_tripplanner",
-      "label": "TripPlanner()",
-      "degree": 8
+      "id": "frontend_src_services_api_deletetrip",
+      "label": "deleteTrip()",
+      "degree": 9
     },
     {
-      "id": "frontend_src_pages_trainstatus_trainstatus",
-      "label": "TrainStatus()",
-      "degree": 8
-    },
-    {
-      "id": "frontend_src_pages_tripdetails_tripdetails",
-      "label": "TripDetails()",
+      "id": "frontend_src_data_traveldata_getdestinationbyid",
+      "label": "getDestinationById()",
       "degree": 8
     },
     {
       "id": "frontend_src_pages_budgetcalculator_budgetcalculator",
       "label": "BudgetCalculator()",
-      "degree": 7
-    },
-    {
-      "id": "frontend_src_services_api_logoutuser",
-      "label": "logoutUser()",
-      "degree": 7
-    },
-    {
-      "id": "frontend_src_services_api_deletetrip",
-      "label": "deleteTrip()",
-      "degree": 7
+      "degree": 8
     }
   ],
   "surprises": [
     {
-      "source": "Uniform JSON Response Envelope Protocol",
-      "target": "getDestinations()",
+      "source": "Agra Taj Mahal Destination Image",
+      "target": "DestinationDetails()",
       "source_files": [
-        "DOCUMENTATION/TRD.md",
+        "frontend/public/images/destinations/agra.jpg",
+        "frontend/src/pages/DestinationDetails.jsx"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (code \u2194 image); peripheral node `Agra Taj Mahal Destination Image` unexpectedly reaches hub `DestinationDetails()`"
+    },
+    {
+      "source": "Goa Beach Coastline Destination Image",
+      "target": "DestinationCard()",
+      "source_files": [
+        "frontend/public/images/destinations/goa.jpg",
+        "frontend/src/components/DestinationCard.jsx"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (code \u2194 image)"
+    },
+    {
+      "source": "handleDelete()",
+      "target": "deleteTrip()",
+      "source_files": [
+        "frontend/src/components/TripCard.jsx",
         "frontend/src/services/api.js"
       ],
-      "confidence": "INFERRED",
-      "relation": "conceptually_related_to",
-      "why": "inferred connection - not explicitly stated in source; crosses file types (doc \u2194 code); connects across different repos/directories; peripheral node `Uniform JSON Response Envelope Protocol` unexpectedly reaches hub `getDestinations()`"
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities; peripheral node `handleDelete()` unexpectedly reaches hub `deleteTrip()`"
     },
     {
-      "source": "Gemini AI Itinerary Integration",
-      "target": "AIRecommendation()",
+      "source": "Airplane Favicon Graphic",
+      "target": "HTML5 Web Application Shell",
       "source_files": [
-        "DOCUMENTATION/API_DOCUMENTATION.md",
-        "frontend/src/pages/Placeholders.jsx"
+        "frontend/public/favicon.svg",
+        "frontend/index.html"
       ],
-      "confidence": "INFERRED",
-      "relation": "conceptually_related_to",
-      "why": "inferred connection - not explicitly stated in source; crosses file types (code \u2194 doc); connects across different repos/directories"
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "crosses file types (doc \u2194 image)"
     },
     {
-      "source": "Amadeus Flights API Integration",
-      "target": "FlightSearch()",
+      "source": "getDestination()",
+      "target": "getDestinationById()",
       "source_files": [
-        "DOCUMENTATION/API_DOCUMENTATION.md",
-        "frontend/src/pages/Placeholders.jsx"
+        "frontend/src/services/api.js",
+        "frontend/src/data/travelData.js"
       ],
-      "confidence": "INFERRED",
-      "relation": "conceptually_related_to",
-      "why": "inferred connection - not explicitly stated in source; crosses file types (code \u2194 doc); connects across different repos/directories"
-    },
-    {
-      "source": "RailRadar API Integration",
-      "target": "TrainSearch()",
-      "source_files": [
-        "DOCUMENTATION/API_DOCUMENTATION.md",
-        "frontend/src/pages/Placeholders.jsx"
-      ],
-      "confidence": "INFERRED",
-      "relation": "conceptually_related_to",
-      "why": "inferred connection - not explicitly stated in source; crosses file types (code \u2194 doc); connects across different repos/directories"
-    },
-    {
-      "source": "Live Weather Integration",
-      "target": "Weather()",
-      "source_files": [
-        "DOCUMENTATION/API_DOCUMENTATION.md",
-        "frontend/src/pages/Placeholders.jsx"
-      ],
-      "confidence": "INFERRED",
-      "relation": "conceptually_related_to",
-      "why": "inferred connection - not explicitly stated in source; crosses file types (code \u2194 doc); connects across different repos/directories"
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
     }
   ],
   "tokens": {

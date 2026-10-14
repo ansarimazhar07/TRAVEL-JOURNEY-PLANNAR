@@ -1,44 +1,45 @@
 <?php
 /**
- * trips.php
+ * trips.php — Trip Itinerary Management REST API Controller
  *
- * REST API for the trips table.
- * All operations require an active PHP session (user must be logged in).
- * User ID is ALWAYS taken from $_SESSION — never from the request body.
+ * Provides complete CRUD (Create, Read, Update, Delete) capabilities for user travel itineraries.
  *
- * GET    /trips.php          → all trips for the logged-in user
- * GET    /trips.php?id=1     → single trip (must belong to logged-in user)
- * POST   /trips.php          → create a new trip
- * PUT    /trips.php?id=1     → update a trip (must belong to logged-in user)
- * DELETE /trips.php?id=1     → delete a trip (must belong to logged-in user)
+ * REST Endpoints:
+ *   GET    /trips.php          → List all trips belonging strictly to the authenticated user
+ *   GET    /trips.php?id=1     → Retrieve single trip details (ownership verified via session)
+ *   POST   /trips.php          → Create and persist a new trip with source, destination & dates
+ *   PUT    /trips.php?id=1     → Update existing trip details (ownership verified via session)
+ *   DELETE /trips.php?id=1     → Permanently delete a trip (ownership verified via session)
+ *
+ * Critical Security Invariant:
+ *   User ID is ALWAYS retrieved from $_SESSION['user_id'] on the server.
+ *   The client cannot spoof or modify the user ownership of any trip.
  */
 
-// Start session with secure cross-origin settings
+// --- Session & Cross-Origin Middleware ---
 require_once __DIR__ . '/session.php';
-
-// Include CORS headers (includes Content-Type: application/json)
 require_once 'cors.php';
-
-// Include database connection
 require_once 'db.php';
 
-// ---- Check authentication ----
-// All trip endpoints require a logged-in user
+// --- Global Authentication Enforcement ---
+// Every trip management operation requires an active, verified session
 if (!isset($_SESSION['user_id'])) {
     http_response_code(401);
     echo json_encode(['error' => 'Please login to manage trips.']);
     exit;
 }
 
-// The logged-in user's ID — taken from the session, never from the client
+// Extract authenticated user ID from server-side session
 $userId = (int) $_SESSION['user_id'];
 
-// ---- Route to the correct handler ----
+// --- REST Method Dispatching ---
+// Inspect HTTP verb and optional query parameter 'id' to route to dedicated action handlers
 $method = $_SERVER['REQUEST_METHOD'];
 $tripId = isset($_GET['id']) ? (int) $_GET['id'] : null;
 
 switch ($method) {
     case 'GET':
+        // Read: single trip if 'id' provided, otherwise all trips for user
         if ($tripId) {
             getOneTrip($conn, $userId, $tripId);
         } else {
@@ -47,10 +48,12 @@ switch ($method) {
         break;
 
     case 'POST':
+        // Create: insert a new trip record into database
         createTrip($conn, $userId);
         break;
 
     case 'PUT':
+        // Update: modify an existing trip record
         if (!$tripId) {
             http_response_code(400);
             echo json_encode(['error' => 'Trip ID is required for update.']);
@@ -60,6 +63,7 @@ switch ($method) {
         break;
 
     case 'DELETE':
+        // Delete: remove an existing trip record
         if (!$tripId) {
             http_response_code(400);
             echo json_encode(['error' => 'Trip ID is required for deletion.']);
@@ -69,9 +73,23 @@ switch ($method) {
         break;
 
     default:
+        // Reject unsupported HTTP verbs
         http_response_code(405);
         echo json_encode(['error' => 'Method not allowed.']);
         break;
+}
+
+// Helper: Check if source_location column exists in trips table
+function hasSourceLocationColumn($conn) {
+    static $has = null;
+    if ($has !== null) return $has;
+    try {
+        $check = $conn->query("SHOW COLUMNS FROM `trips` LIKE 'source_location'");
+        $has = ($check && $check->rowCount() > 0);
+    } catch (Exception $e) {
+        $has = false;
+    }
+    return $has;
 }
 
 // ============================================================
@@ -79,11 +97,14 @@ switch ($method) {
 // ============================================================
 function getAllTrips($conn, $userId) {
     try {
+        $hasSource = hasSourceLocationColumn($conn);
+        $sourceCol = $hasSource ? "t.source_location," : "'' AS source_location,";
+
         // JOIN with destinations so the frontend gets the destination name
         $stmt = $conn->prepare(
             "SELECT t.id, t.destination_id, d.name AS destination_name,
-                    t.trip_name, t.start_date, t.end_date,
-                    t.num_travellers, t.created_at
+                    t.trip_name, {$sourceCol} t.start_date, t.end_date,
+                    t.num_travellers, t.notes, t.created_at
              FROM trips t
              LEFT JOIN destinations d ON t.destination_id = d.id
              WHERE t.user_id = ?
@@ -91,6 +112,15 @@ function getAllTrips($conn, $userId) {
         );
         $stmt->execute([$userId]);
         $trips = $stmt->fetchAll();
+
+        // If source_location was empty but notes contains Source info, parse it
+        foreach ($trips as &$t) {
+            if (empty($t['source_location']) && !empty($t['notes'])) {
+                if (preg_match('/(?:^|\n)Source:\s*([^\n\r]+)/i', $t['notes'], $m)) {
+                    $t['source_location'] = trim($m[1]);
+                }
+            }
+        }
 
         echo json_encode([
             'success' => true,
@@ -115,9 +145,12 @@ function getOneTrip($conn, $userId, $tripId) {
     }
 
     try {
+        $hasSource = hasSourceLocationColumn($conn);
+        $sourceCol = $hasSource ? "t.source_location," : "'' AS source_location,";
+
         $stmt = $conn->prepare(
             "SELECT t.id, t.destination_id, d.name AS destination_name,
-                    t.trip_name, t.start_date, t.end_date,
+                    t.trip_name, {$sourceCol} t.start_date, t.end_date,
                     t.num_travellers, t.notes, t.created_at
              FROM trips t
              LEFT JOIN destinations d ON t.destination_id = d.id
@@ -130,6 +163,12 @@ function getOneTrip($conn, $userId, $tripId) {
             http_response_code(404);
             echo json_encode(['error' => 'Trip not found.']);
             return;
+        }
+
+        if (empty($trip['source_location']) && !empty($trip['notes'])) {
+            if (preg_match('/(?:^|\n)Source:\s*([^\n\r]+)/i', $trip['notes'], $m)) {
+                $trip['source_location'] = trim($m[1]);
+            }
         }
 
         echo json_encode([
@@ -151,15 +190,18 @@ function createTrip($conn, $userId) {
     $body = json_decode(file_get_contents('php://input'), true);
 
     // Extract fields
-    $destinationId = isset($body['destination_id']) ? (int) $body['destination_id'] : 0;
-    $startDate     = isset($body['start_date'])     ? trim($body['start_date'])     : '';
-    $endDate       = isset($body['end_date'])       ? trim($body['end_date'])       : '';
-    $travellers    = isset($body['num_travellers'])  ? (int) $body['num_travellers']  : 1;
+    $destinationId   = isset($body['destination_id'])   ? (int) $body['destination_id'] : 0;
+    $destinationName = isset($body['destination_name']) ? trim((string)$body['destination_name']) : (isset($body['destination']) ? trim((string)$body['destination']) : '');
+    $sourceLocation  = isset($body['source_location'])  ? trim($body['source_location']) : (isset($body['source']) ? trim($body['source']) : '');
+    $startDate       = isset($body['start_date'])       ? trim($body['start_date'])     : '';
+    $endDate         = isset($body['end_date'])         ? trim($body['end_date'])       : '';
+    $travellers      = isset($body['num_travellers'])   ? (int) $body['num_travellers']  : 1;
+    $customTripName  = isset($body['trip_name'])        ? trim($body['trip_name'])      : '';
 
     // ---- Validate ----
-    if ($destinationId <= 0) {
+    if ($destinationId <= 0 && empty($destinationName)) {
         http_response_code(400);
-        echo json_encode(['error' => 'Please select a destination.']);
+        echo json_encode(['error' => 'Please enter or select a destination.']);
         return;
     }
 
@@ -187,28 +229,69 @@ function createTrip($conn, $userId) {
         return;
     }
 
-    // ---- Verify destination exists ----
+    // ---- Resolve destination (predefined or custom) ----
     try {
-        $destCheck = $conn->prepare("SELECT id, name FROM destinations WHERE id = ?");
-        $destCheck->execute([$destinationId]);
-        $destination = $destCheck->fetch();
+        $destination = null;
+        if ($destinationId > 0) {
+            $destCheck = $conn->prepare("SELECT id, name FROM destinations WHERE id = ?");
+            $destCheck->execute([$destinationId]);
+            $destination = $destCheck->fetch();
+        }
+
+        // If not found by ID or ID was not provided, look up or create by name
+        if (!$destination && !empty($destinationName)) {
+            $destFind = $conn->prepare("SELECT id, name FROM destinations WHERE LOWER(name) = LOWER(?) LIMIT 1");
+            $destFind->execute([$destinationName]);
+            $destination = $destFind->fetch();
+
+            if (!$destination) {
+                // Auto-create destination record to satisfy foreign key
+                $destInsert = $conn->prepare("INSERT INTO destinations (name, country, category, description) VALUES (?, 'World', 'Custom', ?)");
+                $destInsert->execute([$destinationName, 'Custom destination planned by traveler']);
+                $destinationId = (int)$conn->lastInsertId();
+                $destination = ['id' => $destinationId, 'name' => $destinationName];
+            } else {
+                $destinationId = (int)$destination['id'];
+            }
+        }
 
         if (!$destination) {
             http_response_code(400);
-            echo json_encode(['error' => 'Selected destination does not exist.']);
+            echo json_encode(['error' => 'Please enter a valid destination.']);
             return;
         }
 
-        // Auto-generate a trip name from the destination
-        $tripName = $destination['name'] . ' Trip';
+        // Generate trip name
+        if (!empty($customTripName)) {
+            $tripName = $customTripName;
+        } elseif (!empty($sourceLocation)) {
+            $tripName = $sourceLocation . ' to ' . $destination['name'] . ' Trip';
+        } else {
+            $tripName = $destination['name'] . ' Trip';
+        }
+
+        // Prepare notes
+        $notes = isset($body['notes']) ? trim($body['notes']) : '';
+        if (!empty($sourceLocation)) {
+            $notes = "Source: " . $sourceLocation . ($notes ? "\n" . $notes : '');
+        }
+
+        $hasSource = hasSourceLocationColumn($conn);
 
         // ---- Insert the trip ----
-        // NOTE: user_id comes from the session, NOT from the request body
-        $stmt = $conn->prepare(
-            "INSERT INTO trips (user_id, destination_id, trip_name, start_date, end_date, num_travellers)
-             VALUES (?, ?, ?, ?, ?, ?)"
-        );
-        $stmt->execute([$userId, $destinationId, $tripName, $startDate, $endDate, $travellers]);
+        if ($hasSource) {
+            $stmt = $conn->prepare(
+                "INSERT INTO trips (user_id, destination_id, trip_name, source_location, start_date, end_date, num_travellers, notes)
+                 VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+            );
+            $stmt->execute([$userId, $destinationId, $tripName, $sourceLocation, $startDate, $endDate, $travellers, $notes]);
+        } else {
+            $stmt = $conn->prepare(
+                "INSERT INTO trips (user_id, destination_id, trip_name, start_date, end_date, num_travellers, notes)
+                 VALUES (?, ?, ?, ?, ?, ?, ?)"
+            );
+            $stmt->execute([$userId, $destinationId, $tripName, $startDate, $endDate, $travellers, $notes]);
+        }
 
         $newTripId = $conn->lastInsertId();
 
@@ -239,15 +322,18 @@ function updateTrip($conn, $userId, $tripId) {
     // Read JSON body
     $body = json_decode(file_get_contents('php://input'), true);
 
-    $destinationId = isset($body['destination_id']) ? (int) $body['destination_id'] : 0;
-    $startDate     = isset($body['start_date'])     ? trim($body['start_date'])     : '';
-    $endDate       = isset($body['end_date'])       ? trim($body['end_date'])       : '';
-    $travellers    = isset($body['num_travellers'])  ? (int) $body['num_travellers']  : 1;
+    $destinationId   = isset($body['destination_id'])   ? (int) $body['destination_id'] : 0;
+    $destinationName = isset($body['destination_name']) ? trim((string)$body['destination_name']) : (isset($body['destination']) ? trim((string)$body['destination']) : '');
+    $sourceLocation  = isset($body['source_location'])  ? trim($body['source_location']) : (isset($body['source']) ? trim($body['source']) : '');
+    $startDate       = isset($body['start_date'])       ? trim($body['start_date'])     : '';
+    $endDate         = isset($body['end_date'])         ? trim($body['end_date'])       : '';
+    $travellers      = isset($body['num_travellers'])   ? (int) $body['num_travellers']  : 1;
+    $customTripName  = isset($body['trip_name'])        ? trim($body['trip_name'])      : '';
 
     // ---- Validate ----
-    if ($destinationId <= 0) {
+    if ($destinationId <= 0 && empty($destinationName)) {
         http_response_code(400);
-        echo json_encode(['error' => 'Please select a destination.']);
+        echo json_encode(['error' => 'Please enter or select a destination.']);
         return;
     }
 
@@ -276,26 +362,66 @@ function updateTrip($conn, $userId, $tripId) {
     }
 
     try {
-        // Verify destination exists
-        $destCheck = $conn->prepare("SELECT id, name FROM destinations WHERE id = ?");
-        $destCheck->execute([$destinationId]);
-        $destination = $destCheck->fetch();
+        // Resolve destination
+        $destination = null;
+        if ($destinationId > 0) {
+            $destCheck = $conn->prepare("SELECT id, name FROM destinations WHERE id = ?");
+            $destCheck->execute([$destinationId]);
+            $destination = $destCheck->fetch();
+        }
+
+        if (!$destination && !empty($destinationName)) {
+            $destFind = $conn->prepare("SELECT id, name FROM destinations WHERE LOWER(name) = LOWER(?) LIMIT 1");
+            $destFind->execute([$destinationName]);
+            $destination = $destFind->fetch();
+
+            if (!$destination) {
+                $destInsert = $conn->prepare("INSERT INTO destinations (name, country, category, description) VALUES (?, 'World', 'Custom', ?)");
+                $destInsert->execute([$destinationName, 'Custom destination planned by traveler']);
+                $destinationId = (int)$conn->lastInsertId();
+                $destination = ['id' => $destinationId, 'name' => $destinationName];
+            } else {
+                $destinationId = (int)$destination['id'];
+            }
+        }
 
         if (!$destination) {
             http_response_code(400);
-            echo json_encode(['error' => 'Selected destination does not exist.']);
+            echo json_encode(['error' => 'Please enter a valid destination.']);
             return;
         }
 
-        $tripName = $destination['name'] . ' Trip';
+        if (!empty($customTripName)) {
+            $tripName = $customTripName;
+        } elseif (!empty($sourceLocation)) {
+            $tripName = $sourceLocation . ' to ' . $destination['name'] . ' Trip';
+        } else {
+            $tripName = $destination['name'] . ' Trip';
+        }
+
+        $notes = isset($body['notes']) ? trim($body['notes']) : '';
+        if (!empty($sourceLocation)) {
+            $notes = "Source: " . $sourceLocation . ($notes ? "\n" . $notes : '');
+        }
+
+        $hasSource = hasSourceLocationColumn($conn);
 
         // Update — WHERE includes user_id so a user cannot edit another user's trip
-        $stmt = $conn->prepare(
-            "UPDATE trips
-             SET destination_id = ?, trip_name = ?, start_date = ?, end_date = ?, num_travellers = ?
-             WHERE id = ? AND user_id = ?"
-        );
-        $stmt->execute([$destinationId, $tripName, $startDate, $endDate, $travellers, $tripId, $userId]);
+        if ($hasSource) {
+            $stmt = $conn->prepare(
+                "UPDATE trips
+                 SET destination_id = ?, trip_name = ?, source_location = ?, start_date = ?, end_date = ?, num_travellers = ?, notes = ?
+                 WHERE id = ? AND user_id = ?"
+            );
+            $stmt->execute([$destinationId, $tripName, $sourceLocation, $startDate, $endDate, $travellers, $notes, $tripId, $userId]);
+        } else {
+            $stmt = $conn->prepare(
+                "UPDATE trips
+                 SET destination_id = ?, trip_name = ?, start_date = ?, end_date = ?, num_travellers = ?, notes = ?
+                 WHERE id = ? AND user_id = ?"
+            );
+            $stmt->execute([$destinationId, $tripName, $startDate, $endDate, $travellers, $notes, $tripId, $userId]);
+        }
 
         if ($stmt->rowCount() === 0) {
             http_response_code(404);

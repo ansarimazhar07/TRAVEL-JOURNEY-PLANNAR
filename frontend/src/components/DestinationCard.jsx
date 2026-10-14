@@ -31,6 +31,8 @@ function DestinationCard({ destination }) {
     image_url,
     category,
     best_time,
+    budget,
+    places,
   } = destination
 
   // Pick the fallback emoji based on category
@@ -38,6 +40,14 @@ function DestinationCard({ destination }) {
 
   // Decide whether to show image or fallback emoji
   const hasImage = image_url && image_url.trim() !== ''
+
+  // Budget preview string
+  const budgetStr = budget?.daily_backpacker
+    ? `From ₹${budget.daily_backpacker.toLocaleString('en-IN')}/day`
+    : 'Budget-friendly'
+
+  // Places count
+  const placesCount = places && places.length > 0 ? `${places.length} top places` : 'Top attractions'
 
   return (
     <div className="dest-card">
@@ -67,6 +77,11 @@ function DestinationCard({ destination }) {
         {category && (
           <span className="dest-card-category">{category}</span>
         )}
+
+        {/* Budget preview pill */}
+        <span className="dest-card-budget-badge">
+          💰 {budgetStr}
+        </span>
       </div>
 
       {/* ---- Card body ---- */}
@@ -81,18 +96,31 @@ function DestinationCard({ destination }) {
         {/* Short description — clamped to 2 lines via CSS */}
         <p className="dest-card-desc">{description}</p>
 
-        {/* Best time to visit */}
-        {best_time && (
-          <div className="dest-card-meta">
-            <span className="dest-card-meta-icon">🗓️</span>
-            <span>Best time: {best_time}</span>
-          </div>
-        )}
+        {/* Key metadata highlights */}
+        <div className="dest-card-chips">
+          {best_time && (
+            <span className="dest-chip" title="Best time to visit">
+              🗓️ {best_time}
+            </span>
+          )}
+          <span className="dest-chip" title="Places to explore">
+            🏛️ {placesCount}
+          </span>
+        </div>
 
-        {/* Navigate to Destination Details page */}
-        <Link to={`/destinations/${id}`} className="dest-card-btn">
-          View Details →
-        </Link>
+        {/* Action buttons */}
+        <div className="dest-card-actions">
+          <Link to={`/destinations/${id}`} className="dest-card-btn dest-card-btn-view">
+            Explore Details →
+          </Link>
+          <Link
+            to={`/plan-trip?destination=${id}`}
+            className="dest-card-btn dest-card-btn-plan"
+            title={`Plan a trip to ${name}`}
+          >
+            ✈️ Plan Trip
+          </Link>
+        </div>
       </div>
     </div>
   )

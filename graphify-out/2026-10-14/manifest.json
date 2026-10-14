@@ -1,0 +1,452 @@
+{
+  "backend/cors.php": {
+    "mtime": 1791131563.700693,
+    "seen": 1791994012.1229985,
+    "ast_hash": "9451e08c9d6e279e407be8cc890e2abe",
+    "semantic_hash": "9451e08c9d6e279e407be8cc890e2abe"
+  },
+  "backend/db.php": {
+    "mtime": 1791133255.8718145,
+    "seen": 1791994012.1230025,
+    "ast_hash": "118157b7507e0faad7b04aa1f17c4666",
+    "semantic_hash": "118157b7507e0faad7b04aa1f17c4666"
+  },
+  "backend/destinations.php": {
+    "mtime": 1790699012.7758253,
+    "seen": 1790775463.3337872,
+    "ast_hash": "97a53799a1acb5c3591c80b2953d0ba4",
+    "semantic_hash": "97a53799a1acb5c3591c80b2953d0ba4"
+  },
+  "database/phase2_destinations.sql": {
+    "mtime": 1790698964.5382786,
+    "seen": 1790775463.3337882,
+    "ast_hash": "6786e26d4585bb518010d0e9f8318c2c",
+    "semantic_hash": "6786e26d4585bb518010d0e9f8318c2c"
+  },
+  "database/travel_planner.sql": {
+    "mtime": 1791376019.751663,
+    "seen": 1791994012.1298432,
+    "ast_hash": "ef4caba02795d6d25d3e15b54ad36b39",
+    "semantic_hash": "ef4caba02795d6d25d3e15b54ad36b39"
+  },
+  "frontend/package.json": {
+    "mtime": 1790697341.365755,
+    "seen": 1790775463.3337903,
+    "ast_hash": "64ddefbedf1a795f993b352de1c55d10",
+    "semantic_hash": "64ddefbedf1a795f993b352de1c55d10"
+  },
+  "frontend/src/App.jsx": {
+    "mtime": 1791993055.5412083,
+    "seen": 1791994012.1304796,
+    "ast_hash": "63b1ff59cb9e5c20defe626b402736ad",
+    "semantic_hash": "63b1ff59cb9e5c20defe626b402736ad"
+  },
+  "frontend/src/components/DestinationCard.jsx": {
+    "mtime": 1791376327.6109016,
+    "seen": 1791994012.1304915,
+    "ast_hash": "b527e9f3cf6ca1ea12ee992b0f6319bf",
+    "semantic_hash": "b527e9f3cf6ca1ea12ee992b0f6319bf"
+  },
+  "frontend/src/components/Footer.jsx": {
+    "mtime": 1791384491.444116,
+    "seen": 1791994012.1304955,
+    "ast_hash": "95c7b81073a42a78fa5c7e62aaf7fb40",
+    "semantic_hash": "95c7b81073a42a78fa5c7e62aaf7fb40"
+  },
+  "frontend/src/components/Navbar.jsx": {
+    "mtime": 1791992998.168503,
+    "seen": 1791994012.1305044,
+    "ast_hash": "ceb10175ecf8a8974cc3588c839f48c1",
+    "semantic_hash": "ceb10175ecf8a8974cc3588c839f48c1"
+  },
+  "frontend/src/main.jsx": {
+    "mtime": 1790697396.53494,
+    "seen": 1790775463.3337948,
+    "ast_hash": "3515c9c05b2704f34e8824aeb61cee55",
+    "semantic_hash": "3515c9c05b2704f34e8824aeb61cee55"
+  },
+  "frontend/src/pages/About.jsx": {
+    "mtime": 1790697544.8004868,
+    "seen": 1790775463.3337958,
+    "ast_hash": "78e2fc620736406c4f0f397a01487c56",
+    "semantic_hash": "78e2fc620736406c4f0f397a01487c56"
+  },
+  "frontend/src/pages/DestinationDetails.jsx": {
+    "mtime": 1791384526.2155216,
+    "seen": 1791994012.1360989,
+    "ast_hash": "d0e57cdef05308e6b8d95ac3351ae29c",
+    "semantic_hash": "d0e57cdef05308e6b8d95ac3351ae29c"
+  },
+  "frontend/src/pages/Destinations.jsx": {
+    "mtime": 1791382806.798623,
+    "seen": 1791994012.1361065,
+    "ast_hash": "c236eb43e4d78fd4dee4cdd15184f6c4",
+    "semantic_hash": "c236eb43e4d78fd4dee4cdd15184f6c4"
+  },
+  "frontend/src/pages/Home.jsx": {
+    "mtime": 1791384509.7762814,
+    "seen": 1791994012.1361132,
+    "ast_hash": "5543461c83a768f05e56861a18ccf56e",
+    "semantic_hash": "5543461c83a768f05e56861a18ccf56e"
+  },
+  "frontend/src/pages/Placeholders.jsx": {
+    "mtime": 1791993017.5192504,
+    "seen": 1791994012.137743,
+    "ast_hash": "d192c91aaed97a27a9d380f581f9a8ab",
+    "semantic_hash": "d192c91aaed97a27a9d380f581f9a8ab"
+  },
+  "frontend/src/services/api.js": {
+    "mtime": 1791992958.1103206,
+    "seen": 1791994012.140323,
+    "ast_hash": "8c79985dd156c5da3968bf38b8ced25b",
+    "semantic_hash": "8c79985dd156c5da3968bf38b8ced25b"
+  },
+  "frontend/tsconfig.json": {
+    "mtime": 1790697253.9946084,
+    "seen": 1790775463.3338013,
+    "ast_hash": "b1bc7586ede7357232305cd2b870286d",
+    "semantic_hash": "b1bc7586ede7357232305cd2b870286d"
+  },
+  "frontend/vite.config.js": {
+    "mtime": 1790697334.9191978,
+    "seen": 1790775463.333802,
+    "ast_hash": "a8cda45ef1e1e9c4f455152314ab4ffe",
+    "semantic_hash": "a8cda45ef1e1e9c4f455152314ab4ffe"
+  },
+  "setup_backend.ps1": {
+    "mtime": 1790700130.295743,
+    "seen": 1790775463.333803,
+    "ast_hash": "6c3948e548947986eb03ff59de13414b",
+    "semantic_hash": "6c3948e548947986eb03ff59de13414b"
+  },
+  "frontend/index.html": {
+    "mtime": 1790697351.1054635,
+    "seen": 1790775463.3338132,
+    "ast_hash": "96eed24dfc526ead9c49b991f917298f",
+    "semantic_hash": "96eed24dfc526ead9c49b991f917298f"
+  },
+  "frontend/public/favicon.svg": {
+    "mtime": 1790697253.9876864,
+    "seen": 1790775463.3338144,
+    "ast_hash": "7e840862161341271697daa99a40d76b",
+    "semantic_hash": "7e840862161341271697daa99a40d76b"
+  },
+  "frontend/public/icons.svg": {
+    "mtime": 1790697253.9876864,
+    "seen": 1790775463.3338149,
+    "ast_hash": "3b4fcfcf393eca4d264dca4a4663bc37",
+    "semantic_hash": "3b4fcfcf393eca4d264dca4a4663bc37"
+  },
+  "frontend/public/images/destinations/agra.jpg": {
+    "mtime": 1790698609.4785967,
+    "seen": 1790775463.3338158,
+    "ast_hash": "71fbc25b6d61a79c7a86278adbe7f850",
+    "semantic_hash": "71fbc25b6d61a79c7a86278adbe7f850"
+  },
+  "frontend/public/images/destinations/delhi.jpg": {
+    "mtime": 1790698837.2256577,
+    "seen": 1790775463.3338165,
+    "ast_hash": "92b6b1c0bdf1aed3c6d3d49e2e1af01e",
+    "semantic_hash": "92b6b1c0bdf1aed3c6d3d49e2e1af01e"
+  },
+  "frontend/public/images/destinations/goa.jpg": {
+    "mtime": 1790698535.386768,
+    "seen": 1790775463.3338172,
+    "ast_hash": "f769dff7547d3ebe64abfd0945d24ef3",
+    "semantic_hash": "f769dff7547d3ebe64abfd0945d24ef3"
+  },
+  "frontend/public/images/destinations/jaipur.jpg": {
+    "mtime": 1790698563.6525152,
+    "seen": 1790775463.3338182,
+    "ast_hash": "77c07e7c44446a1111e1145dd0efc601",
+    "semantic_hash": "77c07e7c44446a1111e1145dd0efc601"
+  },
+  "frontend/public/images/destinations/manali.jpg": {
+    "mtime": 1790698594.869024,
+    "seen": 1790775463.333819,
+    "ast_hash": "90c73373cdf129bc8e36952cd2092b8c",
+    "semantic_hash": "90c73373cdf129bc8e36952cd2092b8c"
+  },
+  "frontend/public/images/destinations/mumbai.jpg": {
+    "mtime": 1790698824.6729612,
+    "seen": 1790775463.33382,
+    "ast_hash": "a8b644f214e7cb63064efd899700ddf6",
+    "semantic_hash": "a8b644f214e7cb63064efd899700ddf6"
+  },
+  "frontend/public/images/destinations/munnar.jpg": {
+    "mtime": 1790698645.4672067,
+    "seen": 1790775463.3338244,
+    "ast_hash": "9c472a3269c58a88c4910c2d940f7af0",
+    "semantic_hash": "9c472a3269c58a88c4910c2d940f7af0"
+  },
+  "frontend/public/images/destinations/varanasi.jpg": {
+    "mtime": 1790698660.0694506,
+    "seen": 1790775463.3338256,
+    "ast_hash": "3ef73bb78f6fcebef9b57e44983440dd",
+    "semantic_hash": "3ef73bb78f6fcebef9b57e44983440dd"
+  },
+  "backend/auth/check.php": {
+    "mtime": 1791131607.0430627,
+    "seen": 1791994012.1229684,
+    "ast_hash": "b1d0513e3003dc69371da2bbb62e9efe",
+    "semantic_hash": "b1d0513e3003dc69371da2bbb62e9efe"
+  },
+  "backend/auth/login.php": {
+    "mtime": 1791131592.0057285,
+    "seen": 1791994012.1229775,
+    "ast_hash": "2ed0a3080f5424ef1abb2bffa129186c",
+    "semantic_hash": "2ed0a3080f5424ef1abb2bffa129186c"
+  },
+  "backend/auth/logout.php": {
+    "mtime": 1791131616.734455,
+    "seen": 1791994012.1229837,
+    "ast_hash": "a4423d3c8cce32cbd302a0a746108b6f",
+    "semantic_hash": "a4423d3c8cce32cbd302a0a746108b6f"
+  },
+  "backend/auth/profile.php": {
+    "mtime": 1791131626.4363475,
+    "seen": 1791994012.1229894,
+    "ast_hash": "96d7f200ad39b3690bddb75e421c2ed7",
+    "semantic_hash": "96d7f200ad39b3690bddb75e421c2ed7"
+  },
+  "backend/auth/register.php": {
+    "mtime": 1791131599.9140227,
+    "seen": 1791994012.122994,
+    "ast_hash": "614a4d66f7b41c18fef6496802d133a3",
+    "semantic_hash": "614a4d66f7b41c18fef6496802d133a3"
+  },
+  "backend/hotels.php": {
+    "mtime": 1790871337.3877738,
+    "seen": 1790935747.670485,
+    "ast_hash": "b8ac2663975e4ab4c513c5307d571314",
+    "semantic_hash": "b8ac2663975e4ab4c513c5307d571314"
+  },
+  "backend/places.php": {
+    "mtime": 1790871335.137281,
+    "seen": 1790935747.670491,
+    "ast_hash": "01fe8b8b4618e775bb1e955bdd73ed14",
+    "semantic_hash": "01fe8b8b4618e775bb1e955bdd73ed14"
+  },
+  "backend/trips.php": {
+    "mtime": 1791385513.938337,
+    "seen": 1791994012.1271753,
+    "ast_hash": "ccd2b2f3cd225ef9f28bea9fb66de963",
+    "semantic_hash": "ccd2b2f3cd225ef9f28bea9fb66de963"
+  },
+  "database/phase3_places_hotels.sql": {
+    "mtime": 1790776040.9632351,
+    "seen": 1790935747.6722813,
+    "ast_hash": "df5cb92436560bf281b8156def7f4117",
+    "semantic_hash": "df5cb92436560bf281b8156def7f4117"
+  },
+  "database/phase3_seed_data.sql": {
+    "mtime": 1790871230.242195,
+    "seen": 1790935747.6722887,
+    "ast_hash": "3e4e92024465bee812ac23a53f047945",
+    "semantic_hash": "3e4e92024465bee812ac23a53f047945"
+  },
+  "database/phase4_auth.sql": {
+    "mtime": 1790868779.6561894,
+    "seen": 1790935747.6722941,
+    "ast_hash": "40644173bb752a40d485838ac80fedbc",
+    "semantic_hash": "40644173bb752a40d485838ac80fedbc"
+  },
+  "database/phase5_trips.sql": {
+    "mtime": 1791375999.9269097,
+    "seen": 1791994012.1298282,
+    "ast_hash": "59ec177f55cd3f352286207d09553340",
+    "semantic_hash": "59ec177f55cd3f352286207d09553340"
+  },
+  "frontend/src/components/HotelCard.jsx": {
+    "mtime": 1791128685.5748425,
+    "seen": 1791994012.1305,
+    "ast_hash": "51ca34a304a1f448598428733b28d484",
+    "semantic_hash": "51ca34a304a1f448598428733b28d484"
+  },
+  "frontend/src/components/PlaceCard.jsx": {
+    "mtime": 1791128645.3740256,
+    "seen": 1791994012.1305091,
+    "ast_hash": "353e0848ba3422543913ae978d589386",
+    "semantic_hash": "353e0848ba3422543913ae978d589386"
+  },
+  "frontend/src/components/TripCard.jsx": {
+    "mtime": 1791382901.0014443,
+    "seen": 1791994012.1313176,
+    "ast_hash": "382ba6150a683f7a5fd47c1e94f5ceaa",
+    "semantic_hash": "382ba6150a683f7a5fd47c1e94f5ceaa"
+  },
+  "frontend/src/context/AuthContext.jsx": {
+    "mtime": 1790868815.3462398,
+    "seen": 1790935747.6751115,
+    "ast_hash": "9d2d567c643ac409777bb95a65db1913",
+    "semantic_hash": "9d2d567c643ac409777bb95a65db1913"
+  },
+  "frontend/src/pages/BudgetCalculator.jsx": {
+    "mtime": 1790934421.4621997,
+    "seen": 1790935747.6763098,
+    "ast_hash": "ae16f43dacecb03ac92d4551f2cd1723",
+    "semantic_hash": "ae16f43dacecb03ac92d4551f2cd1723"
+  },
+  "frontend/src/pages/HotelDetails.jsx": {
+    "mtime": 1791128749.072992,
+    "seen": 1791994012.136118,
+    "ast_hash": "d3894d8bbf15442842d90e531e6c84d6",
+    "semantic_hash": "d3894d8bbf15442842d90e531e6c84d6"
+  },
+  "frontend/src/pages/Hotels.jsx": {
+    "mtime": 1790777060.2135568,
+    "seen": 1790935747.6777866,
+    "ast_hash": "5cb99658a5da68427a5c2f6a538138f4",
+    "semantic_hash": "5cb99658a5da68427a5c2f6a538138f4"
+  },
+  "frontend/src/pages/Login.jsx": {
+    "mtime": 1790869031.6547027,
+    "seen": 1790935747.6777925,
+    "ast_hash": "1a83c810a91aee3727c78cad2b951ed7",
+    "semantic_hash": "1a83c810a91aee3727c78cad2b951ed7"
+  },
+  "frontend/src/pages/MyTrips.jsx": {
+    "mtime": 1791382924.444383,
+    "seen": 1791994012.1377296,
+    "ast_hash": "56e7be88a217fc2928f6b2dc80089f90",
+    "semantic_hash": "56e7be88a217fc2928f6b2dc80089f90"
+  },
+  "frontend/src/pages/PlaceDetails.jsx": {
+    "mtime": 1791128716.8964148,
+    "seen": 1791994012.1377378,
+    "ast_hash": "875b8381552ede06195810e6eaff18ff",
+    "semantic_hash": "875b8381552ede06195810e6eaff18ff"
+  },
+  "frontend/src/pages/Places.jsx": {
+    "mtime": 1790776595.6374383,
+    "seen": 1790935747.6778138,
+    "ast_hash": "9ac4d835b9a896b7d43f11a4d1300e0b",
+    "semantic_hash": "9ac4d835b9a896b7d43f11a4d1300e0b"
+  },
+  "frontend/src/pages/Profile.jsx": {
+    "mtime": 1790869243.6673346,
+    "seen": 1790935747.6778183,
+    "ast_hash": "f776f92cdfe1eb69e20610ea0d8e2202",
+    "semantic_hash": "f776f92cdfe1eb69e20610ea0d8e2202"
+  },
+  "frontend/src/pages/Register.jsx": {
+    "mtime": 1790869063.7057972,
+    "seen": 1790935747.6778219,
+    "ast_hash": "e04a9158385d7dce3f3f430ed03d504f",
+    "semantic_hash": "e04a9158385d7dce3f3f430ed03d504f"
+  },
+  "frontend/src/pages/TripDetails.jsx": {
+    "mtime": 1791385973.710408,
+    "seen": 1791994012.140314,
+    "ast_hash": "3a59d2f31f1aff8244451d07709a8ccd",
+    "semantic_hash": "3a59d2f31f1aff8244451d07709a8ccd"
+  },
+  "frontend/src/pages/TripPlanner.jsx": {
+    "mtime": 1791385879.6851976,
+    "seen": 1791994012.1403184,
+    "ast_hash": "712b3ec1f31f9499d7fdc7a72cdf2846",
+    "semantic_hash": "712b3ec1f31f9499d7fdc7a72cdf2846"
+  },
+  "backend/trains.php": {
+    "mtime": 1790939530.9466262,
+    "seen": 1790941701.018666,
+    "ast_hash": "8bdb84d5daccc3dfda9f6fb61fa01e22",
+    "semantic_hash": "8bdb84d5daccc3dfda9f6fb61fa01e22"
+  },
+  "frontend/src/components/TrainCard.jsx": {
+    "mtime": 1791992977.3583355,
+    "seen": 1791994012.131311,
+    "ast_hash": "df3df422aa2756ce891a7158fa676703",
+    "semantic_hash": "df3df422aa2756ce891a7158fa676703"
+  },
+  "frontend/src/pages/TrainSearch.jsx": {
+    "mtime": 1791126550.4339876,
+    "seen": 1791994012.1403008,
+    "ast_hash": "f26d584597d2ff2d62e87f41a5ff3c69",
+    "semantic_hash": "f26d584597d2ff2d62e87f41a5ff3c69"
+  },
+  "frontend/src/components/StationInput.jsx": {
+    "mtime": 1790942102.1791809,
+    "seen": 1790942311.7432067,
+    "ast_hash": "770983bdde369812b4f3135e2f69b132",
+    "semantic_hash": "770983bdde369812b4f3135e2f69b132"
+  },
+  "frontend/src/data/stations.js": {
+    "mtime": 1790942087.5654511,
+    "seen": 1790942311.7435675,
+    "ast_hash": "ec71311efcc66b487c51e150263f1612",
+    "semantic_hash": "ec71311efcc66b487c51e150263f1612"
+  },
+  "backend/ai.php": {
+    "mtime": 1791386937.8367124,
+    "seen": 1791994012.1229463,
+    "ast_hash": "e91a4d60de2636165c8cbd75d0373b6e",
+    "semantic_hash": "e91a4d60de2636165c8cbd75d0373b6e"
+  },
+  "frontend/src/pages/AIRecommendation.jsx": {
+    "mtime": 1791092451.147145,
+    "seen": 1791095868.9244518,
+    "ast_hash": "3d60496240d52c641fa8b7202ffdc3b3",
+    "semantic_hash": "3d60496240d52c641fa8b7202ffdc3b3"
+  },
+  "backend/train_live.php": {
+    "mtime": 1791123583.786362,
+    "seen": 1791123899.6632478,
+    "ast_hash": "c7bc394db6687e7722cbfa73f82f7efa",
+    "semantic_hash": "c7bc394db6687e7722cbfa73f82f7efa"
+  },
+  "frontend/src/pages/TrainStatus.jsx": {
+    "mtime": 1791126565.419016,
+    "seen": 1791994012.1403093,
+    "ast_hash": "80f6e7628c68a505055ecb503162276e",
+    "semantic_hash": "80f6e7628c68a505055ecb503162276e"
+  },
+  "backend/index.php": {
+    "mtime": 1791131722.0539863,
+    "seen": 1791994012.1243794,
+    "ast_hash": "f9d5dea7fd6ff66d18a4cdb364ec28f9",
+    "semantic_hash": "f9d5dea7fd6ff66d18a4cdb364ec28f9"
+  },
+  "backend/route_planner_data.php": {
+    "mtime": 1791387448.4841628,
+    "seen": 1791994012.1256804,
+    "ast_hash": "251c80c2886be19dc6c822075124ac95",
+    "semantic_hash": "251c80c2886be19dc6c822075124ac95"
+  },
+  "backend/session.php": {
+    "mtime": 1791131529.8548322,
+    "seen": 1791994012.1256883,
+    "ast_hash": "6fb27c4d8c44dd6b18e8b0cfbc803861",
+    "semantic_hash": "6fb27c4d8c44dd6b18e8b0cfbc803861"
+  },
+  "database/complete_production_database.sql": {
+    "mtime": 1791376132.6887958,
+    "seen": 1791994012.1271846,
+    "ast_hash": "ab544eab4b240ad83de6fb58058c7480",
+    "semantic_hash": "ab544eab4b240ad83de6fb58058c7480"
+  },
+  "database/supabase_schema_and_data.sql": {
+    "mtime": 1791133237.194178,
+    "seen": 1791994012.1298363,
+    "ast_hash": "d7b645bb7b19adf9dddfa72781eb3034",
+    "semantic_hash": "d7b645bb7b19adf9dddfa72781eb3034"
+  },
+  "frontend/src/components/AIItineraryDisplay.jsx": {
+    "mtime": 1791384423.176455,
+    "seen": 1791994012.130486,
+    "ast_hash": "4436713055c42e5b92e8a11648585dc5",
+    "semantic_hash": "4436713055c42e5b92e8a11648585dc5"
+  },
+  "frontend/src/data/routePlannerData.js": {
+    "mtime": 1791387329.1852016,
+    "seen": 1791994012.1320357,
+    "ast_hash": "e4d2c53192e59f6f4e3dc0e58f387107",
+    "semantic_hash": "e4d2c53192e59f6f4e3dc0e58f387107"
+  },
+  "frontend/src/data/travelData.js": {
+    "mtime": 1791375940.0935822,
+    "seen": 1791994012.132655,
+    "ast_hash": "04625cd1c9bda889f41d9b3191c49a49",
+    "semantic_hash": "04625cd1c9bda889f41d9b3191c49a49"
+  }
+}

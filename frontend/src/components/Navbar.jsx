@@ -12,12 +12,11 @@ const PUBLIC_LINKS = [
   { label: 'Hotels',            path: '/hotels' },
   { label: 'Train Search',      path: '/train-search' },
   { label: 'Live Train Status', path: '/train-status' },
-  { label: 'AI Recommendation', path: '/ai-recommendation' },
+  { label: 'Plan Trip',         path: '/plan-trip' },
 ]
 
 // Links only shown when the user is logged in
 const AUTH_LINKS = [
-  { label: 'Plan Trip', path: '/plan-trip' },
   { label: 'My Trips',  path: '/my-trips'  },
   { label: 'Budget',    path: '/budget'    },
 ]
@@ -38,21 +37,6 @@ function Navbar() {
     await logoutUser()   // Tell PHP to destroy the session
     logout()             // Clear React auth state
     navigate('/')        // Go to Home
-  }
-
-  // Helper to render a NavLink with active class
-  function NavItem({ path, label, end = false, extraClass = '' }) {
-    return (
-      <NavLink
-        to={path}
-        className={({ isActive }) =>
-          isActive ? `nav-link ${extraClass} active`.trim() : `nav-link ${extraClass}`.trim()
-        }
-        end={end}
-      >
-        {label}
-      </NavLink>
-    )
   }
 
   return (

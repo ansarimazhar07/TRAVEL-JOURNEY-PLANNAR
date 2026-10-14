@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import './TrainCard.css'
 
 const ALL_DAYS = [
@@ -13,7 +12,6 @@ const ALL_DAYS = [
 ]
 
 export default function TrainCard({ train, onSelect }) {
-  const navigate = useNavigate()
   const [copied, setCopied] = useState(false)
 
   if (!train) return null
